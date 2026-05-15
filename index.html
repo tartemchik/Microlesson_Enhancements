@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E1 — Tabbed Scenario Switcher · Requirements & Alternatives</title>
+<title>AI Literacy Platform Enhancements · Index</title>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -20,15 +20,23 @@
   --green-lt:  #EAF7F5;
   --amber:     #B5952E;
   --amber-lt:  #FEF9EE;
+  --purple:    #7B5EA7;
+  --purple-lt: #EDE8F5;
   --white:     #ffffff;
   --font-head: 'Merriweather', Georgia, serif;
   --font-body: 'Open Sans', -apple-system, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); background: #ECEEF4; color: var(--deep-navy); font-size: 15px; line-height: 1.65; }
+body {
+  font-family: var(--font-body);
+  background: #ECEEF4;
+  color: var(--deep-navy);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
 
-/* ── SHELL ── */
-.shell { max-width: 1060px; margin: 0 auto; padding: 0 32px 100px; }
+.shell { max-width: 860px; margin: 0 auto; padding: 0 28px 100px; }
 
 /* ── COVER ── */
 .cover {
@@ -38,212 +46,154 @@ body { font-family: var(--font-body); background: #ECEEF4; color: var(--deep-nav
   margin: 32px 0 44px;
   position: relative; overflow: hidden;
 }
-.cover::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:rgba(168,208,230,.07); }
-.cover-eyebrow { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--sky); margin-bottom:12px; }
-.cover-title { font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--white); line-height:1.25; margin-bottom:8px; }
-.cover-sub { font-size:15px; color:rgba(255,255,255,.55); margin-bottom:24px; }
-.cover-tags { display:flex; gap:10px; flex-wrap:wrap; }
-.ctag { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
-.ctag-coral { background:var(--coral); color:#fff; }
-.ctag-sky   { background:rgba(168,208,230,.18); color:var(--sky); border:1px solid rgba(168,208,230,.3); }
-
-/* ── CHAPTER ── */
-.chapter { margin-bottom:52px; }
-.chapter-hd { display:flex; align-items:center; gap:0; margin-bottom:28px; }
-.ch-num { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; background:var(--coral); padding:7px 16px; border-radius:4px 0 0 4px; }
-.ch-bar { flex:1; background:var(--deep-navy); padding:10px 20px; border-radius:0 6px 6px 0; }
-.ch-title { font-family:var(--font-head); font-size:17px; font-weight:700; color:#fff; }
-
-/* ── SECTION ── */
-.sec { margin-bottom:32px; }
-.sec-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--deep-navy); padding-bottom:8px; border-bottom:2px solid var(--rule); margin-bottom:14px; }
-.sec-body { font-size:14px; line-height:1.75; color:var(--deep-navy); margin-bottom:10px; }
-
-/* ── COMPARISON TABLE ── */
-.comp-table { width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:20px; }
-.comp-table th { background:var(--deep-navy); color:#fff; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:11px 14px; text-align:left; }
-.comp-table td { padding:11px 14px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.55; }
-.comp-table tr:last-child td { border-bottom:none; }
-.comp-table tr:nth-child(even) td { background:var(--warm-gray); }
-.badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:2px 9px; border-radius:10px; }
-.b-high   { background:var(--coral-lt); color:var(--coral); }
-.b-med    { background:var(--amber-lt); color:var(--amber); }
-.b-low    { background:var(--green-lt); color:var(--green); }
-.b-rec    { background:var(--navy); color:#fff; }
-.b-full   { background:var(--deep-navy); color:#fff; }
-
-/* ── ALTERNATIVE CARDS ── */
-.alt-grid { display:flex; flex-direction:column; gap:28px; margin-bottom:12px; }
-.alt-card { background:#fff; border:1.5px solid var(--rule); border-radius:12px; overflow:hidden; }
-.alt-card-header { display:flex; align-items:stretch; background:var(--deep-navy); }
-.alt-label { background:var(--coral); padding:16px 18px; font-family:var(--font-head); font-size:20px; font-weight:700; color:#fff; display:flex; align-items:center; min-width:56px; justify-content:center; }
-.alt-header-text { padding:14px 18px; flex:1; }
-.alt-name { font-family:var(--font-head); font-size:15px; font-weight:700; color:#fff; margin-bottom:3px; }
-.alt-tagline { font-size:12px; color:rgba(255,255,255,.5); }
-.alt-badges { padding:14px 18px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-.alt-body { padding:20px 22px; }
-.alt-rationale { background:var(--warm-gray); border-radius:6px; padding:13px 16px; font-size:13.5px; line-height:1.65; margin-bottom:18px; color:var(--deep-navy); }
-.alt-rationale strong { color:var(--navy); }
-.pros-cons { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
-.pro-box { background:var(--green-lt); border-left:3px solid var(--green); border-radius:0 6px 6px 0; padding:12px 14px; }
-.con-box { background:var(--coral-lt); border-left:3px solid var(--coral); border-radius:0 6px 6px 0; padding:12px 14px; }
-.pc-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
-.pro-box .pc-label { color:var(--green); }
-.con-box .pc-label { color:var(--coral); }
-.pc-list { list-style:none; display:flex; flex-direction:column; gap:5px; }
-.pc-list li { font-size:13px; line-height:1.5; color:var(--deep-navy); display:flex; gap:7px; }
-.pc-list li::before { content:''; flex-shrink:0; margin-top:5px; }
-.pro-box .pc-list li::before { content:'✓'; color:var(--green); font-weight:700; font-size:11px; }
-.con-box .pc-list li::before { content:'✗'; color:var(--coral); font-weight:700; font-size:11px; }
-
-/* ── MOCKUP FRAME ── */
-.mockup-wrap { margin-top:4px; }
-.mockup-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-.mockup-label::after { content:''; flex:1; height:1px; background:var(--rule); }
-.platform-frame {
-  width:660px;
-  background:#fff;
-  border:1.5px solid var(--rule);
-  border-radius:8px;
-  padding:20px 22px;
-  font-family:var(--font-body);
-  font-size:14px;
-  line-height:1.65;
-  color:var(--deep-navy);
+.cover::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:260px; height:260px; border-radius:50%;
+  background:rgba(168,208,230,.07);
 }
-.platform-frame-full {
-  width:100%;
-  background:#fff;
-  border:1.5px solid var(--rule);
-  border-radius:8px;
-  padding:20px 22px;
+.cover::after {
+  content:''; position:absolute; bottom:-40px; left:60px;
+  width:180px; height:180px; border-radius:50%;
+  background:rgba(247,108,108,.05);
 }
+.cover-eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--sky); margin-bottom:12px;
+}
+.cover-title {
+  font-family:var(--font-head); font-size:26px; font-weight:700;
+  color:var(--white); line-height:1.25; margin-bottom:8px;
+}
+.cover-sub { font-size:14px; color:rgba(255,255,255,.55); margin-bottom:28px; }
+.cover-meta {
+  display:flex; gap:10px; flex-wrap:wrap;
+  padding-top:24px; border-top:1px solid rgba(255,255,255,.1);
+}
+.meta-item { font-size:12px; color:rgba(255,255,255,.45); display:flex; align-items:center; gap:6px; }
+.meta-item strong { color:rgba(255,255,255,.75); }
 
-/* ── SHARED CONTENT ELEMENTS ── */
-.scenario-label { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); margin-bottom:4px; }
-.scenario-title { font-family:var(--font-head); font-size:14px; font-weight:700; color:var(--deep-navy); margin-bottom:3px; }
-.scenario-hook  { font-size:12.5px; color:var(--slate); font-style:italic; margin-bottom:10px; }
-
-.ai-card { border-radius:8px; border:1.5px solid var(--rule); overflow:hidden; margin-bottom:0; }
-.ai-card-hd { display:flex; align-items:center; gap:9px; padding:9px 14px; background:var(--deep-navy); }
-.ai-badge { background:var(--coral); color:#fff; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:2px 7px; border-radius:3px; }
-.ai-lbl { font-size:12px; color:#A8C4D6; font-weight:600; }
-.ai-body { padding:13px 14px; font-size:13px; line-height:1.65; }
-.ai-flag { font-weight:700; color:var(--navy); text-decoration:underline dotted var(--coral) 1.5px; }
-.ai-src  { font-style:italic; color:var(--slate); font-size:12px; margin-top:8px; display:block; }
-
-/* ── OPTION A: SIDEBAR NAV ── */
-.sidebar-demo { display:flex; gap:0; border:1.5px solid var(--rule); border-radius:8px; overflow:hidden; }
-.sidebar-nav { width:180px; background:#FAF9F7; border-right:1px solid var(--rule); flex-shrink:0; }
-.sidebar-nav-item { padding:10px 14px; font-size:13px; color:var(--slate); border-left:3px solid transparent; display:flex; align-items:center; gap:8px; cursor:pointer; }
-.sidebar-nav-item.active { background:#fff; border-left-color:var(--coral); color:var(--deep-navy); font-weight:700; }
-.sidebar-nav-item .sni-dot { width:7px; height:7px; border-radius:50%; background:var(--rule); flex-shrink:0; }
-.sidebar-nav-item.active .sni-dot { background:var(--coral); }
-.sidebar-nav-item.done .sni-dot { background:var(--sky); }
-.sidebar-content { flex:1; padding:16px 18px; }
-.sidebar-page-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin-bottom:6px; }
-.sidebar-page-title { font-family:var(--font-head); font-size:16px; font-weight:700; color:var(--deep-navy); margin-bottom:12px; }
-
-/* ── OPTION B: SHOW/HIDE STACK ── */
-.sh-stack { display:flex; flex-direction:column; gap:8px; }
-.sh-item { border:1.5px solid var(--rule); border-radius:8px; overflow:hidden; }
-.sh-item.open { border-color:var(--sky); }
-.sh-trigger { display:flex; align-items:center; gap:12px; padding:13px 16px; background:var(--warm-gray); cursor:pointer; }
-.sh-item.open .sh-trigger { background:var(--sky-lt); }
-.sh-icon { width:30px; height:30px; border-radius:50%; background:#fff; border:2px solid var(--rule); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:var(--slate); flex-shrink:0; }
-.sh-item.open .sh-icon { border-color:var(--sky); color:var(--navy); background:var(--sky-lt); }
-.sh-name { font-weight:700; font-size:13.5px; color:var(--deep-navy); flex:1; }
-.sh-toggle { width:24px; height:24px; border-radius:50%; border:2px solid var(--rule); display:flex; align-items:center; justify-content:center; color:var(--slate); font-size:16px; }
-.sh-item.open .sh-toggle { transform:rotate(45deg); border-color:var(--sky); color:var(--sky); }
-.sh-body { padding:14px 16px; border-top:1px solid var(--rule); font-size:13px; line-height:1.6; display:none; }
-.sh-item.open .sh-body { display:block; }
-
-/* ── OPTION C: BUTTON-REVEAL (platform-matched style) ── */
-:root { --lavender: #E8E0F5; --lavender-border: #C4AEED; --lavender-dark: #7B5EA7; }
-.btn-reveal-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:0; }
-.reveal-btn {
-  padding:14px 12px; border-radius:10px;
-  border:1.5px dashed var(--lavender-border);
-  background: var(--lavender);
-  cursor:pointer; text-align:left; transition:all .18s;
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate);
+  margin-bottom:14px;
   display:flex; align-items:center; gap:10px;
 }
-.reveal-btn:hover:not(.active) { border-style:solid; border-color:var(--lavender-dark); }
-.reveal-btn.active {
-  border-style:solid; border-color:var(--lavender-dark);
-  background: #DDD4F0;
-  box-shadow: 0 1px 6px rgba(123,94,167,.18);
-}
-.rb-toggle {
-  width:22px; height:22px; border-radius:50%;
-  border:2px solid var(--lavender-dark);
-  background:#fff; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  font-size:16px; font-weight:300; color:var(--lavender-dark);
-  transition:transform .18s;
-  line-height:1;
-}
-.reveal-btn.active .rb-toggle { transform:rotate(45deg); }
-.rb-text { flex:1; }
-.rb-name { font-weight:700; font-size:13px; color:#3D2B6B; line-height:1.3; }
-.rb-desc { font-size:11px; color:#7B5EA7; margin-top:2px; line-height:1.35; }
-.reveal-panel {
-  display:none;
-  margin-top:8px;
-  border-radius:10px;
-  border:1.5px solid var(--lavender-dark);
-  background:#fff;
-  animation:panelIn .18s ease-out;
-  overflow:hidden;
-}
-.reveal-panel.show { display:block; }
-@keyframes panelIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
-.reveal-panel-header {
-  background: var(--lavender);
-  padding:8px 16px;
-  display:flex; align-items:center; gap:8px;
-  border-bottom:1px solid var(--lavender-border);
-}
-.rph-label { font-size:12px; font-weight:700; color:#3D2B6B; }
-.reveal-panel-body { padding:14px 16px; font-size:13px; line-height:1.65; color:var(--deep-navy); }
-
-/* ── OPTION E: TRUE TABS ── */
-.tab-row { display:flex; border-bottom:2px solid var(--rule); margin-bottom:0; }
-.tab-btn { padding:10px 18px; font-size:13px; font-weight:600; color:var(--slate); background:transparent; border:none; border-bottom:3px solid transparent; margin-bottom:-2px; cursor:pointer; display:flex; align-items:center; gap:7px; transition:color .15s, border-color .15s; }
-.tab-btn svg { stroke:currentColor; }
-.tab-btn:hover:not(.active) { color:var(--deep-navy); }
-.tab-btn.active { color:var(--deep-navy); border-bottom-color:#444; font-weight:700; }
-.tab-panel { display:none; }
-.tab-panel.active { display:block; }
-
-/* ── REQUIREMENTS TABLE ── */
-.req-table { width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:20px; }
-.req-table th { background:var(--deep-navy); color:#fff; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:10px 14px; text-align:left; }
-.req-table td { padding:11px 14px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.6; }
-.req-table tr:last-child td { border-bottom:none; }
-.req-table tr:nth-child(even) td { background:var(--warm-gray); }
-.req-id { font-family:'Courier New', monospace; font-size:11px; font-weight:700; color:var(--navy); white-space:nowrap; }
-.req-must { color:var(--coral); font-weight:700; }
-.req-should { color:var(--amber); font-weight:700; }
+.section-label::after { content:''; flex:1; height:1px; background:var(--rule); }
 
 /* ── CALLOUT ── */
-.callout { padding:14px 18px; border-radius:0 8px 8px 0; border-left:4px solid; margin-bottom:16px; font-size:13.5px; line-height:1.65; }
-.callout-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; }
-.c-sky   { background:var(--sky-lt); border-color:var(--sky); }
-.c-sky .callout-label { color:var(--navy); }
-.c-amber { background:var(--amber-lt); border-color:var(--amber); }
-.c-amber .callout-label { color:var(--amber); }
-.c-navy  { background:#EEF0FA; border-color:var(--navy); }
-.c-navy .callout-label { color:var(--navy); }
+.callout {
+  padding:14px 18px; border-radius:0 8px 8px 0;
+  border-left:4px solid; margin-bottom:28px;
+  font-size:13.5px; line-height:1.65;
+}
+.c-sky { background:var(--sky-lt); border-color:var(--sky); }
+.callout-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); margin-bottom:4px; }
 
-/* ── STORYBOARD FORMAT ── */
-.code-block { background:var(--deep-navy); border-radius:8px; padding:16px 20px; font-family:'Courier New', monospace; font-size:12.5px; line-height:1.7; color:#A8D0E6; margin-bottom:16px; overflow-x:auto; }
-.code-block .co { color:rgba(255,255,255,.35); }
-.code-block .kw { color:var(--coral); font-weight:700; }
-.code-block .val { color:#E9C46A; }
+/* ── ENHANCEMENT CARDS ── */
+.enhancements { display:flex; flex-direction:column; gap:12px; margin-bottom:40px; }
 
-/* ── DIVIDER ── */
-hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
+.enh-card {
+  background:var(--white);
+  border:1.5px solid var(--rule);
+  border-radius:12px;
+  overflow:hidden;
+  transition:box-shadow .2s, border-color .2s;
+  text-decoration:none;
+  display:block;
+  color:inherit;
+}
+.enh-card.has-doc:hover {
+  border-color:var(--coral);
+  box-shadow:0 3px 16px rgba(247,108,108,.12);
+}
+.enh-card.pending { opacity:.8; }
+
+.enh-card-inner { display:flex; align-items:stretch; }
+
+/* Number badge */
+.enh-num {
+  width:64px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-head); font-size:22px; font-weight:700;
+  color:var(--white);
+}
+.enh-card:nth-child(1) .enh-num { background:var(--coral); }
+.enh-card:nth-child(2) .enh-num { background:var(--purple); }
+.enh-card:nth-child(3) .enh-num { background:var(--navy); }
+.enh-card:nth-child(4) .enh-num { background:#2E6DA4; }
+.enh-card:nth-child(5) .enh-num { background:var(--green); }
+.enh-card:nth-child(6) .enh-num { background:var(--amber); }
+.enh-card:nth-child(7) .enh-num { background:var(--slate); }
+
+/* Main content */
+.enh-content {
+  flex:1; padding:16px 20px;
+  display:flex; flex-direction:column; gap:4px;
+}
+.enh-title {
+  font-family:var(--font-head); font-size:15px; font-weight:700;
+  color:var(--deep-navy); line-height:1.3;
+}
+.enh-subtitle {
+  font-size:13px; color:var(--slate); line-height:1.5;
+}
+.enh-meta {
+  display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;
+}
+.tag {
+  font-size:10px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; padding:2px 9px; border-radius:10px;
+}
+.tag-high   { background:var(--coral-lt);  color:var(--coral);  border:1px solid var(--coral); }
+.tag-med    { background:var(--amber-lt);  color:var(--amber);  border:1px solid var(--amber); }
+.tag-doc    { background:var(--green-lt);  color:var(--green);  border:1px solid var(--green); }
+.tag-pending{ background:var(--warm-gray); color:var(--slate);  border:1px solid var(--rule);  }
+.tag-p1     { background:var(--coral-lt);  color:var(--coral); }
+.tag-p2     { background:var(--purple-lt); color:var(--purple); }
+
+/* Right arrow / status */
+.enh-action {
+  width:52px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; color:var(--rule);
+  transition:color .2s;
+}
+.enh-card.has-doc:hover .enh-action { color:var(--coral); }
+.enh-card.pending .enh-action { font-size:13px; color:var(--slate); writing-mode:initial; }
+
+/* ── PRIORITY LEGEND ── */
+.legend {
+  background:var(--white); border:1.5px solid var(--rule);
+  border-radius:10px; padding:16px 20px; margin-bottom:32px;
+  display:flex; gap:20px; flex-wrap:wrap; align-items:center;
+}
+.legend-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); }
+.legend-items { display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ── PROGRESS BAR ── */
+.progress-section { margin-bottom:32px; }
+.progress-header {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:8px;
+}
+.progress-label { font-size:13px; font-weight:600; color:var(--deep-navy); }
+.progress-count { font-size:12px; color:var(--slate); }
+.progress-track {
+  height:8px; background:var(--rule); border-radius:4px; overflow:hidden;
+}
+.progress-fill {
+  height:100%; border-radius:4px;
+  background:linear-gradient(90deg, var(--coral) 0%, var(--purple) 100%);
+  transition:width .4s ease;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  padding-top:24px; border-top:1px solid var(--rule);
+  font-size:12px; color:var(--slate);
+  display:flex; justify-content:space-between; align-items:center;
+}
 </style>
 </head>
 <body>
@@ -251,595 +201,190 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
 
   <!-- COVER -->
   <div class="cover">
-    <div class="cover-eyebrow">AI Literacy Microlessons · Platform Enhancements · E1</div>
-    <div class="cover-title">Tabbed Scenario Switcher<br>Requirements &amp; Alternatives</div>
-    <div class="cover-sub">Audience-lens navigation for the layered example pattern · Modules 2–4</div>
-    <div class="cover-tags">
-      <span class="ctag ctag-coral">Enhancement E1</span>
-      <span class="ctag ctag-sky">High Priority</span>
-      <span class="ctag ctag-sky">4 Alternatives Evaluated</span>
-      <span class="ctag ctag-sky">Full Requirements Included</span>
+    <div class="cover-eyebrow">LearningExpress · AI Literacy Initiative · FY2027</div>
+    <div class="cover-title">Platform Enhancements<br>Requirements Index</div>
+    <div class="cover-sub">Prioritized list of platform capabilities needed to deliver the full AI literacy microlesson design intent · Modules 2–4</div>
+    <div class="cover-meta">
+      <div class="meta-item"><strong>7</strong> enhancements total</div>
+      <div class="meta-item"><strong>2</strong> with full requirements docs</div>
+      <div class="meta-item"><strong>5</strong> requirements pending</div>
+      <div class="meta-item"><strong>May 2026</strong></div>
     </div>
   </div>
 
+  <!-- CONTEXT CALLOUT -->
+  <div class="callout c-sky">
+    <div class="callout-label">About this list</div>
+    These enhancements were identified during the development of ML 2.6 (Your Verification Toolkit) and represent platform capability gaps that constrain instructional design across all AI literacy microlessons. They are listed in priority order — highest instructional impact and broadest recurrence across modules first. Each item links to its full requirements document where available.
+  </div>
 
-  <!-- ═══════════════════════════════════════════
-       PART 1: THE PROBLEM
-  ════════════════════════════════════════════ -->
-  <div class="chapter">
-    <div class="chapter-hd">
-      <span class="ch-num">Context</span>
-      <div class="ch-bar"><div class="ch-title">Why this enhancement is needed</div></div>
+  <!-- PROGRESS -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label">Requirements documentation progress</span>
+      <span class="progress-count">2 of 7 complete</span>
     </div>
-
-    <div class="sec">
-      <p class="sec-body">All three new modules (2, 3, and 4) use a <strong>layered example pattern</strong>: every concept is illustrated through three parallel life-context lenses — Student, Job Seeker, and Everyday Life. The platform currently has no way to present three parallel content variants and let learners switch between them. The current workaround is three stacked Show/Hide sections, which has real limitations at scale.</p>
-    </div>
-
-    <div class="callout c-amber">
-      <div class="callout-label">The gap</div>
-      Three stacked Show/Hide sections require learners to scroll past content that doesn't apply to them. There's no visual signal that they're making a choice between equivalent options — the interaction implies all three should be read, not that one is theirs. As modules expand, pages with 6–7 audience-segmented sections become unwieldy.
-    </div>
-
-    <div class="callout c-sky">
-      <div class="callout-label">Design principle</div>
-      The three lenses are mutually exclusive audience contexts, not sequential steps or hierarchical information. A learner belongs to one context and should be able to navigate directly to their scenario without interacting with the others at all. Tabs are the correct interaction pattern for this structure.
+    <div class="progress-track">
+      <div class="progress-fill" style="width:28.5%;"></div>
     </div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════
-       PART 2: ALTERNATIVES
-  ════════════════════════════════════════════ -->
-  <div class="chapter">
-    <div class="chapter-hd">
-      <span class="ch-num">Part 1</span>
-      <div class="ch-bar"><div class="ch-title">Alternative Approaches — Comparison</div></div>
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-label">Priority</span>
+    <div class="legend-items">
+      <span class="tag tag-high">High</span>
+      <span class="tag tag-med">Medium</span>
     </div>
-
-    <table class="comp-table" style="margin-bottom:28px;">
-      <tr>
-        <th>Option</th>
-        <th>Approach</th>
-        <th>Dev cost</th>
-        <th>Instructional value</th>
-        <th>Verdict</th>
-      </tr>
-      <tr>
-        <td><strong>A</strong></td>
-        <td>Separate pages per lens, sidebar nav</td>
-        <td><span class="badge b-low">Zero</span></td>
-        <td>Low — no choice signal, requires page navigation</td>
-        <td>Workaround only</td>
-      </tr>
-      <tr>
-        <td><strong>B</strong></td>
-        <td>Stacked Show/Hide sections (current)</td>
-        <td><span class="badge b-low">Zero</span></td>
-        <td>Medium — works but degrades at scale</td>
-        <td>Current state</td>
-      </tr>
-      <tr>
-        <td><strong>C</strong></td>
-        <td>Button-reveal panel (tab variant)</td>
-        <td><span class="badge b-med">Medium</span></td>
-        <td>High — true audience choice signal, content reveals below selection</td>
-        <td><span class="badge b-rec">Recommended near-term</span></td>
-      </tr>
-
-      <tr>
-        <td><strong>E</strong></td>
-        <td>True tab component (new)</td>
-        <td><span class="badge b-high">High</span></td>
-        <td>High — correct pattern, extensible, accessible</td>
-        <td><span class="badge b-full">Full requirement</span></td>
-      </tr>
-    </table>
-
-    <div class="alt-grid">
-
-      <!-- OPTION A -->
-      <div class="alt-card">
-        <div class="alt-card-header">
-          <div class="alt-label">A</div>
-          <div class="alt-header-text">
-            <div class="alt-name">Separate Pages via Sidebar Navigation</div>
-            <div class="alt-tagline">Split scenarios across separate lesson pages; use existing sidebar nav to jump between them</div>
-          </div>
-          <div class="alt-badges">
-            <span class="badge b-low">Zero dev cost</span>
-          </div>
-        </div>
-        <div class="alt-body">
-          <div class="alt-rationale"><strong>How it works:</strong> Each scenario (Student, Job Seeker, Everyday Life) lives on its own lesson page. Learners use the sidebar page list to navigate directly to the page relevant to them. No new platform functionality required.</div>
-          <div class="pros-cons">
-            <div class="pro-box">
-              <div class="pc-label">Works for</div>
-              <ul class="pc-list">
-                <li>Zero development cost</li>
-                <li>Works with all existing platform constraints</li>
-                <li>Sidebar already supports labeled page navigation</li>
-              </ul>
-            </div>
-            <div class="con-box">
-              <div class="pc-label">Drawbacks</div>
-              <ul class="pc-list">
-                <li>No choice signal — learners don't know they're selecting their context</li>
-                <li>Requires page navigation rather than in-place switching</li>
-                <li>Inflates lesson page count across all modules</li>
-                <li>Learners who don't read the sidebar labels won't know options exist</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mockup-wrap">
-            <div class="mockup-label">Mockup — Option A at 660px</div>
-            <div class="platform-frame" style="padding:0;">
-              <div class="sidebar-demo">
-                <div class="sidebar-nav">
-                  <div class="sidebar-nav-item done"><span class="sni-dot"></span>Introduction</div>
-                  <div class="sidebar-nav-item done"><span class="sni-dot"></span>SIFT Method</div>
-                  <div class="sidebar-nav-item active"><span class="sni-dot"></span>Student Scenario</div>
-                  <div class="sidebar-nav-item"><span class="sni-dot"></span>Job Seeker Scenario</div>
-                  <div class="sidebar-nav-item"><span class="sni-dot"></span>Everyday Life</div>
-                  <div class="sidebar-nav-item"><span class="sni-dot"></span>Your Toolkit</div>
-                </div>
-                <div class="sidebar-content">
-                  <div class="sidebar-page-label">Scenario — Student</div>
-                  <div class="sidebar-page-title">Verify Before You Cite</div>
-                  <div class="ai-card">
-                    <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">AI research summary</span></div>
-                    <div class="ai-body">According to a <span class="ai-flag">2022 UN report</span>, crop yields are projected to decline by <span class="ai-flag">up to 25% by 2050</span>…<span class="ai-src">— Generated by AI for a school research paper</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OPTION B -->
-      <div class="alt-card">
-        <div class="alt-card-header">
-          <div class="alt-label">B</div>
-          <div class="alt-header-text">
-            <div class="alt-name">Stacked Show/Hide Sections</div>
-            <div class="alt-tagline">Current workaround — three expandable sections on one page, one per scenario</div>
-          </div>
-          <div class="alt-badges">
-            <span class="badge b-low">Zero dev cost</span>
-          </div>
-        </div>
-        <div class="alt-body">
-          <div class="alt-rationale"><strong>How it works:</strong> Three Show/Hide expandable sections stacked vertically. Each collapses to a labeled trigger showing scenario name and hook text. Learners expand the one that fits. Already deployed in ML 2.6 Page 4.</div>
-          <div class="pros-cons">
-            <div class="pro-box">
-              <div class="pc-label">Works for</div>
-              <ul class="pc-list">
-                <li>Already available and deployed</li>
-                <li>All three options visible at once for comparison</li>
-                <li>Works within all platform constraints</li>
-              </ul>
-            </div>
-            <div class="con-box">
-              <div class="pc-label">Drawbacks</div>
-              <ul class="pc-list">
-                <li>Implies all three should be read, not that one is yours</li>
-                <li>No visual "current selection" state</li>
-                <li>Degrades significantly at scale (6–7 sections on one page)</li>
-                <li>Cognitive overhead — learner must actively ignore irrelevant sections</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mockup-wrap">
-            <div class="mockup-label">Mockup — Option B at 660px (current state)</div>
-            <div class="platform-frame">
-              <p style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;">Choose your scenario</p>
-              <div class="sh-stack">
-                <div class="sh-item open">
-                  <div class="sh-trigger" style="background:var(--lavender);">
-                    <div class="sh-icon" style="border-color:var(--lavender-dark);color:var(--lavender-dark);">−</div>
-                    <div style="flex:1"><div class="sh-name" style="color:#3D2B6B;">AI research summary — for a school paper</div><div style="font-size:12px;color:#7B5EA7;font-style:italic;">An AI summarized research data. Would you cite it?</div></div>
-                  </div>
-                  <div class="sh-body" style="border-top:1px solid var(--lavender-border);">
-                    <p style="font-size:13px;color:var(--deep-navy);line-height:1.65;">An AI research summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics are accurate.</p>
-                  </div>
-                </div>
-                <div class="sh-item" style="border-color:var(--lavender-border);">
-                  <div class="sh-trigger" style="background:var(--lavender);">
-                    <div class="sh-icon" style="border-color:var(--lavender-dark);color:var(--lavender-dark);">+</div>
-                    <div style="flex:1"><div class="sh-name" style="color:#3D2B6B;">AI company overview — before a job interview</div><div style="font-size:12px;color:#7B5EA7;font-style:italic;">An AI generated a company profile. Is it safe to use?</div></div>
-                  </div>
-                </div>
-                <div class="sh-item" style="border-color:var(--lavender-border);">
-                  <div class="sh-trigger" style="background:var(--lavender);">
-                    <div class="sh-icon" style="border-color:var(--lavender-dark);color:var(--lavender-dark);">+</div>
-                    <div style="flex:1"><div class="sh-name" style="color:#3D2B6B;">Health claim shared in a family group chat</div><div style="font-size:12px;color:#7B5EA7;font-style:italic;">A family member got this from an AI chatbot. SIFT it.</div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OPTION C -->
-      <div class="alt-card" style="border-color:var(--coral);box-shadow:0 2px 16px rgba(247,108,108,.1);">
-        <div class="alt-card-header" style="background:#3A1A1A;">
-          <div class="alt-label" style="background:var(--coral);">C</div>
-          <div class="alt-header-text">
-            <div class="alt-name">Button-Reveal Panel (Tab Variant)</div>
-            <div class="alt-tagline">Three side-by-side audience buttons; clicking one reveals that scenario's content directly below — implemented as a visual variant of the tab component</div>
-          </div>
-          <div class="alt-badges">
-            <span class="badge b-med">Medium dev cost</span>
-            <span class="badge" style="background:var(--coral);color:#fff;">Recommended near-term</span>
-          </div>
-        </div>
-        <div class="alt-body">
-          <div class="alt-rationale"><strong>How it works:</strong> Three equal-width button cards sit side by side, each labeled with an audience lens (Student, Job Seeker, Everyday Life). Clicking one activates it (highlighted state) and reveals that scenario's content in a panel directly below all three buttons. Clicking a different button swaps the content. Only one panel is visible at a time. <strong>Implemented as a visual variant of the tab component (Option E) — same underlying interaction logic, same ARIA pattern, different visual treatment. Framing it as a variant reduces dev cost significantly vs. building two separate components.</strong></div>
-          <div class="pros-cons">
-            <div class="pro-box">
-              <div class="pc-label">Works for</div>
-              <ul class="pc-list">
-                <li>Strong audience-choice signal — three equal options, none implying sequence</li>
-                <li>Content appears below selection — spatial logic matches mental model</li>
-                <li>Button card format is visually richer than a tab bar</li>
-                <li>Shares component logic with Option E — lower marginal dev cost if E is also built</li>
-                <li>Accessible — same ARIA tab pattern applies</li>
-              </ul>
-            </div>
-            <div class="con-box">
-              <div class="pc-label">Drawbacks</div>
-              <ul class="pc-list">
-                <li>Medium dev cost — requires new visual treatment even if tab logic is reused</li>
-                <li>Questions still cannot live inside panels (E2 dependency, same as Option E)</li>
-                <li>Three-column layout may be tight on mobile viewports</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mockup-wrap">
-            <div class="mockup-label">Mockup — Option C at 660px (interactive — click a button to reveal its scenario)</div>
-            <div class="platform-frame">
-              <p style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;">Choose your scenario</p>
-              <div class="btn-reveal-row">
-                <div class="reveal-btn" id="rb-s" onclick="selectReveal('s')">
-                  <div class="rb-toggle">+</div>
-                  <div class="rb-text">
-                    <div class="rb-name">Student</div>
-                    <div class="rb-desc">School papers, research, academic work</div>
-                  </div>
-                </div>
-                <div class="reveal-btn" id="rb-j" onclick="selectReveal('j')">
-                  <div class="rb-toggle">+</div>
-                  <div class="rb-text">
-                    <div class="rb-name">Job Seeker</div>
-                    <div class="rb-desc">Interviews, company research, professional contexts</div>
-                  </div>
-                </div>
-                <div class="reveal-btn" id="rb-e" onclick="selectReveal('e')">
-                  <div class="rb-toggle">+</div>
-                  <div class="rb-text">
-                    <div class="rb-name">Everyday Life</div>
-                    <div class="rb-desc">Health info, news, family, community</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="reveal-panel" id="rp-s">
-                <div class="reveal-panel-header"><span class="rph-label">Student scenario</span></div>
-                <div class="reveal-panel-body">
-                  <p style="font-weight:600;color:#3D2B6B;margin-bottom:6px;">Student scenario</p>
-                  <p>An AI research summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics can be traced to a real document.</p>
-                </div>
-              </div>
-
-              <div class="reveal-panel" id="rp-j">
-                <div class="reveal-panel-header"><span class="rph-label">Job Seeker scenario</span></div>
-                <div class="reveal-panel-body">
-                  <p style="font-weight:600;color:#3D2B6B;margin-bottom:6px;">Job Seeker scenario</p>
-                  <p>An AI company overview for interview prep gives a founding year, employee count, and an award. The learner checks the company's own LinkedIn and website and finds two factual errors and an unverifiable award claim.</p>
-                </div>
-              </div>
-
-              <div class="reveal-panel" id="rp-e">
-                <div class="reveal-panel-header"><span class="rph-label">Everyday Life scenario</span></div>
-                <div class="reveal-panel-body">
-                  <p style="font-weight:600;color:#3D2B6B;margin-bottom:6px;">Everyday Life scenario</p>
-                  <p>A health claim shared in a family chat attributes a specific dosage recommendation to the Mayo Clinic. The learner checks MayoClinic.org directly and finds the attribution is fabricated.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OPTION E -->
-      <div class="alt-card" style="border-color:var(--navy);">
-        <div class="alt-card-header">
-          <div class="alt-label" style="background:var(--navy);">E</div>
-          <div class="alt-header-text">
-            <div class="alt-name">True Tab Component (New Development)</div>
-            <div class="alt-tagline">A native tab bar component that switches content panels in place — the correct UX pattern for parallel, mutually exclusive content</div>
-          </div>
-          <div class="alt-badges">
-            <span class="badge b-high">Higher dev cost</span>
-            <span class="badge b-full">Full requirement below</span>
-          </div>
-        </div>
-        <div class="alt-body">
-          <div class="alt-rationale"><strong>How it works:</strong> A horizontal row of labeled tab buttons. Each tab controls a content panel. Clicking a tab hides all other panels and shows the selected one. Active tab is visually distinguished. Works exactly as tabs work across the web — no new UX paradigm for learners to learn. Correct semantic HTML with full ARIA support.</div>
-          <div class="pros-cons">
-            <div class="pro-box">
-              <div class="pc-label">Works for</div>
-              <ul class="pc-list">
-                <li>Correct interaction pattern — universally understood</li>
-                <li>True audience-choice signal — not a sequential pattern</li>
-                <li>Extensible to 4–5 lenses as modules grow</li>
-                <li>Fully accessible with ARIA tab pattern</li>
-                <li>Consistent with web standards learners already know</li>
-              </ul>
-            </div>
-            <div class="con-box">
-              <div class="pc-label">Drawbacks</div>
-              <ul class="pc-list">
-                <li>Higher development cost than other options</li>
-                <li>Questions still can't live inside panels (E2 dependency)</li>
-                <li>Requires new component in platform component library</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mockup-wrap">
-            <div class="mockup-label">Mockup — Option E at 660px (interactive — click the tabs)</div>
-            <div class="platform-frame">
-              <div class="tab-row">
-                <button class="tab-btn active" onclick="switchTab(this,'tp-s')">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                  Student
-                </button>
-                <button class="tab-btn" onclick="switchTab(this,'tp-j')">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-                  Job Seeker
-                </button>
-                <button class="tab-btn" onclick="switchTab(this,'tp-e')">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                  Everyday Life
-                </button>
-              </div>
-              <div class="tab-panel active" id="tp-s" style="padding:16px 4px 4px;">
-                <p style="font-size:13.5px;line-height:1.65;color:#374785;font-weight:600;margin-bottom:6px;">Student scenario</p>
-                <p style="font-size:13px;line-height:1.65;color:#444;">An AI research summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics can be traced to a real document.</p>
-              </div>
-              <div class="tab-panel" id="tp-j" style="padding:16px 4px 4px;">
-                <p style="font-size:13.5px;line-height:1.65;color:#374785;font-weight:600;margin-bottom:6px;">Job Seeker scenario</p>
-                <p style="font-size:13px;line-height:1.65;color:#444;">An AI company overview for interview prep gives a founding year, employee count, and award. The learner checks the company's own LinkedIn and website and finds two factual errors and an unverifiable award claim.</p>
-              </div>
-              <div class="tab-panel" id="tp-e" style="padding:16px 4px 4px;">
-                <p style="font-size:13.5px;line-height:1.65;color:#374785;font-weight:600;margin-bottom:6px;">Everyday Life scenario</p>
-                <p style="font-size:13px;line-height:1.65;color:#444;">A health claim shared in a family chat attributes a specific dosage recommendation to the Mayo Clinic. The learner checks MayoClinic.org directly and finds the attribution is fabricated.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /alt-grid -->
-
-    <div class="callout c-navy">
-      <div class="callout-label">Recommendation</div>
-      <strong>Near-term (FY2027 launch):</strong> Implement Option C — the button-reveal panel as a visual variant of the tab component. Framing it as a variant of Option E reduces the total dev cost of building both, since the interaction logic is shared. The button card format gives a stronger audience-choice signal than a tab bar and the content-below-selection spatial logic is intuitive. <strong>Long-term:</strong> Option E (tab bar) complements Option C as a second visual treatment — useful for content contexts where a horizontal tab bar is more appropriate than a full-width button grid.
+    <span class="legend-label" style="margin-left:12px;">Status</span>
+    <div class="legend-items">
+      <span class="tag tag-doc">Doc ready</span>
+      <span class="tag tag-pending">Pending</span>
+    </div>
+    <span class="legend-label" style="margin-left:12px;">Phase</span>
+    <div class="legend-items">
+      <span class="tag tag-p1">Phase 1 MVP</span>
+      <span class="tag tag-p2">Phase 2</span>
     </div>
   </div>
 
+  <!-- SECTION: HIGH PRIORITY -->
+  <div class="section-label">High Priority</div>
+  <div class="enhancements">
 
-  <!-- ═══════════════════════════════════════════
-       PART 2: FULL REQUIREMENTS (OPTION E)
-  ════════════════════════════════════════════ -->
-  <div class="chapter">
-    <div class="chapter-hd">
-      <span class="ch-num">Part 2</span>
-      <div class="ch-bar"><div class="ch-title">E1 Full Requirements — Tab Component</div></div>
-    </div>
-
-    <div class="callout c-sky" style="margin-bottom:24px;">
-      <div class="callout-label">Scope</div>
-      These requirements define the full Tab component for Option E and apply equally to the Button-Reveal Panel (Option C), which shares the same interaction logic and ARIA pattern. They are intended for product and engineering review and serve as acceptance criteria for development.
-    </div>
-
-    <!-- RENDERING -->
-    <div class="sec">
-      <div class="sec-title">Rendering &amp; Layout</div>
-      <table class="req-table">
-        <tr><th width="140">Requirement ID</th><th>Description</th></tr>
-        <tr>
-          <td><span class="req-id">FR-E1-01</span></td>
-          <td>The tab bar renders as a horizontal row of labeled buttons directly above the content region it controls. Minimum 2 tabs, maximum 5 tabs per tab group. Tab labels are specified by the content author and may include a single leading emoji or icon.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-02</span></td>
-          <td>The tab bar sits on a 2px Rule Blue (#D1D8E8) bottom border spanning the full container width. The active tab's 3px Coral (#F76C6C) bottom border overlaps this to create a visual "selected" tab state. Inactive tabs have no bottom border.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-03</span></td>
-          <td>Active tab styling: Coral (#F76C6C) label color, font-weight 700, 3px Coral bottom border. Inactive tab styling: Slate Blue (#6B7FA3) label color, font-weight 600, no bottom border. Hover state on inactive tabs: Navy (#374785) label color. Transitions on color: 150ms.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-04</span></td>
-          <td>On page load, Tab 1 is active and its panel is visible. All other panels are hidden (display: none or equivalent). Default active tab may optionally be overridden by content author via storyboard notation.</td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- INTERACTION -->
-    <div class="sec">
-      <div class="sec-title">Interaction Behavior</div>
-      <table class="req-table">
-        <tr><th width="140">Requirement ID</th><th>Description</th></tr>
-        <tr>
-          <td><span class="req-id">FR-E1-05</span></td>
-          <td>Clicking an inactive tab: hides the currently visible panel, shows the newly selected panel, updates active state styling on the tab bar. Panel switching <span class="req-must">must</span> be instantaneous — no transition animation on the panel itself.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-06</span></td>
-          <td>Content within panels <span class="req-must">must</span> retain its expanded/collapsed state when switching tabs. A Show/Hide section that was open in Tab 1 remains open when the learner switches away and returns to Tab 1 within the same page session.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-07</span></td>
-          <td>Tab selection is <span class="req-should">not</span> persisted across page reloads or lesson sessions. Each new page load starts with Tab 1 active.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-08</span></td>
-          <td>Clicking the currently active tab <span class="req-should">does nothing</span> — no toggle, no collapse, no state change.</td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- CONTENT -->
-    <div class="sec">
-      <div class="sec-title">Content Within Panels</div>
-      <table class="req-table">
-        <tr><th width="140">Requirement ID</th><th>Description</th></tr>
-        <tr>
-          <td><span class="req-id">FR-E1-09</span></td>
-          <td>Tab panels may contain any standard platform content type: body text, callouts (all types), Show/Hide sections, images, AI Output cards, annotation tables, verdict cards, and Real Talk callouts.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-10</span></td>
-          <td>Tab panels <span class="req-must">may not</span> contain nested tab groups. One level of tabbing only.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-11</span></td>
-          <td>Knowledge check questions (multiple-choice, multiple-select, drag-and-drop, and all other question types) <span class="req-must">may not</span> be placed inside tab panels in v1. This is a known content constraint; see E2 for the dependency that would enable this in a future release.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-12</span></td>
-          <td>All tabs <span class="req-must">must</span> have content. Empty panels are not permitted. The authoring system should surface a validation error if a tab is defined without associated panel content.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-13</span></td>
-          <td>Maximum one tab group per lesson page. Multiple tab groups on the same page are not supported in v1.</td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- RESPONSIVE -->
-    <div class="sec">
-      <div class="sec-title">Responsive Behavior</div>
-      <table class="req-table">
-        <tr><th width="140">Requirement ID</th><th>Description</th></tr>
-        <tr>
-          <td><span class="req-id">FR-E1-14</span></td>
-          <td>On viewports narrower than 480px where tab labels overflow the container width, tabs <span class="req-must">must</span> either wrap to a second row or convert to a select/dropdown menu. Horizontal scrolling within the tab bar is not acceptable.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-15</span></td>
-          <td>Tab labels <span class="req-must">must not</span> truncate at any viewport width. If a label would truncate, the responsive behavior in FR-E1-14 must activate before truncation occurs.</td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- ACCESSIBILITY -->
-    <div class="sec">
-      <div class="sec-title">Accessibility</div>
-      <table class="req-table">
-        <tr><th width="140">Requirement ID</th><th>Description</th></tr>
-        <tr>
-          <td><span class="req-id">FR-E1-16</span></td>
-          <td>Tab bar <span class="req-must">must</span> implement the ARIA tabs pattern: <code style="font-family:monospace;font-size:12px;background:#EEF0FA;padding:1px 5px;border-radius:3px;">role="tablist"</code> on the container, <code style="font-family:monospace;font-size:12px;background:#EEF0FA;padding:1px 5px;border-radius:3px;">role="tab"</code> on each button, <code style="font-family:monospace;font-size:12px;background:#EEF0FA;padding:1px 5px;border-radius:3px;">role="tabpanel"</code> on each panel.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-17</span></td>
-          <td>Each tab <span class="req-must">must</span> carry <code style="font-family:monospace;font-size:12px;background:#EEF0FA;padding:1px 5px;border-radius:3px;">aria-selected="true"</code> when active and <code style="font-family:monospace;font-size:12px;background:#EEF0FA;padding:1px 5px;border-radius:3px;">aria-selected="false"</code> when inactive. Each tab <span class="req-must">must</span> have an <code style="font-family:monospace;font-size:12px;background:#EEF0FA;padding:1px 5px;border-radius:3px;">aria-controls</code> attribute linking it to its panel ID.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-18</span></td>
-          <td>Keyboard navigation <span class="req-must">must</span> follow the ARIA tabs pattern: Left/Right arrow keys move focus between tabs within the tablist. Enter or Space activates the focused tab. Tab key moves focus into the active panel content (not to the next tab button).</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-19</span></td>
-          <td>On tab activation, focus <span class="req-must">must</span> move to the newly visible panel (or to the panel's first focusable element) so keyboard and screen reader users receive the same context switch as mouse users.</td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- AUTHORING -->
-    <div class="sec">
-      <div class="sec-title">Authoring &amp; Storyboard Notation</div>
-      <p class="sec-body">Content authors specify a tab group using the following prod note and manuscript conventions:</p>
-
-      <div class="code-block">
-<span class="co">// Prod note at the point where the tab group begins:</span>
-<span class="kw">Tab Group</span> (<span class="val">Student</span> | <span class="val">Job Seeker</span> | <span class="val">Everyday Life</span>; default: Tab 1)
-
-<span class="co">// Panel content uses delimiter tags:</span>
-<span class="kw">[Tab: Student]</span>
-  ... all content for the Student panel ...
-<span class="kw">[/Tab]</span>
-
-<span class="kw">[Tab: Job Seeker]</span>
-  ... all content for the Job Seeker panel ...
-<span class="kw">[/Tab]</span>
-
-<span class="kw">[Tab: Everyday Life]</span>
-  ... all content for the Everyday Life panel ...
-<span class="kw">[/Tab]</span>
-
-<span class="co">// Standard content types within panels use existing manuscript format.</span>
-<span class="co">// Audience lens tags on Show/Hide triggers within panels are optional</span>
-<span class="co">// (the tab label already signals context).</span>
+    <!-- E1 -->
+    <a class="enh-card has-doc" href="E1_Tabbed_Switcher_Requirements.html">
+      <div class="enh-card-inner">
+        <div class="enh-num">E1</div>
+        <div class="enh-content">
+          <div class="enh-title">Tabbed Scenario Switcher</div>
+          <div class="enh-subtitle">Audience-lens navigation for the layered example pattern. Three side-by-side tabs (Student · Job Seeker · Everyday Life) that switch content panels in place — recurs across every microlesson in Modules 2–4.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-doc">Doc ready</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">→</div>
       </div>
+    </a>
 
-      <table class="req-table">
-        <tr><th width="140">Requirement ID</th><th>Description</th></tr>
-        <tr>
-          <td><span class="req-id">FR-E1-20</span></td>
-          <td>The authoring system must validate that: (a) each Tab Group has between 2 and 5 tabs, (b) every tab has a corresponding panel with content, (c) no tab group is nested inside another, (d) no knowledge check questions appear inside panels.</td>
-        </tr>
-        <tr>
-          <td><span class="req-id">FR-E1-21</span></td>
-          <td>Tab labels are plain text strings of 1–3 words. A single leading emoji is permitted. No HTML or rich text formatting in tab labels.</td>
-        </tr>
-      </table>
+    <!-- E2 -->
+    <a class="enh-card has-doc" href="E2_Self_Assessment_Requirements.html">
+      <div class="enh-card-inner">
+        <div class="enh-num">E2</div>
+        <div class="enh-content">
+          <div class="enh-title">Self-Assessment Question Type</div>
+          <div class="enh-subtitle">A non-graded question type where all answers are valid and each choice triggers unique, personalized feedback. No score, no right/wrong indicator. Essential for reflection moments in professional skills and AI literacy content.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-doc">Doc ready</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">→</div>
+      </div>
+    </a>
+
+    <!-- E3 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E3</div>
+        <div class="enh-content">
+          <div class="enh-title">Questions Inside Show/Hide Sections</div>
+          <div class="enh-subtitle">Scenario-linked embedded assessment — knowledge check questions placed inside expandable sections, directly connected to the stimulus content the learner just read. Currently questions must be decoupled from their scenarios, weakening instructional connection.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
     </div>
 
-    <!-- CONSTRAINTS -->
-    <div class="sec">
-      <div class="sec-title">Content Constraints Summary</div>
-      <table class="req-table">
-        <tr><th>Constraint</th><th>Value</th><th>Notes</th></tr>
-        <tr><td>Minimum tabs per group</td><td>2</td><td></td></tr>
-        <tr><td>Maximum tabs per group</td><td>5</td><td>Covers current 3-lens design with room to grow</td></tr>
-        <tr><td>Tab groups per page</td><td>1</td><td>Multiple groups not supported in v1</td></tr>
-        <tr><td>Tab label length</td><td>1–3 words</td><td>May include 1 leading emoji</td></tr>
-        <tr><td>Questions inside panels</td><td>Not permitted (v1)</td><td>See E2 for future dependency</td></tr>
-        <tr><td>Nested tab groups</td><td>Not permitted</td><td>One level only</td></tr>
-        <tr><td>Empty panels</td><td>Not permitted</td><td>Authoring validation required</td></tr>
-        <tr><td>Session persistence</td><td>Not required (v1)</td><td>Nice-to-have for v2</td></tr>
-      </table>
+    <!-- E4 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E4</div>
+        <div class="enh-content">
+          <div class="enh-title">Progressive Question Unlock</div>
+          <div class="enh-subtitle">Sequential step-by-step interactivity — questions unlock one at a time as the learner answers each preceding question. Enforces the SIFT method as a sequential process rather than a checklist. Answering (correctly or not) unlocks the next step.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
     </div>
 
   </div>
 
-</div><!-- /shell -->
+  <!-- SECTION: MEDIUM PRIORITY -->
+  <div class="section-label">Medium Priority</div>
+  <div class="enhancements">
 
-<script>
-// Button-reveal (Option C)
-function selectReveal(id) {
-  ['s','j','e'].forEach(k => {
-    document.getElementById('rb-'+k).classList.remove('active');
-    document.getElementById('rp-'+k).classList.remove('show');
-  });
-  document.getElementById('rb-'+id).classList.add('active');
-  document.getElementById('rp-'+id).classList.add('show');
-}
+    <!-- E5 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E5</div>
+        <div class="enh-content">
+          <div class="enh-title">Scenario-Linked Question Sets</div>
+          <div class="enh-subtitle">Conditional questions based on which scenario the learner opened. When a learner engages with the Job Seeker scenario, they see job-seeker-specific questions — not generic questions written to work regardless of context. Requires E1 and E3 as prerequisites.</div>
+          <div class="enh-meta">
+            <span class="tag tag-med">Medium priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p2">Phase 2</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
 
-// Tabs (Option E)
-function switchTab(btn, panelId) {
-  const frame = btn.closest('.platform-frame');
-  frame.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  frame.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(panelId).classList.add('active');
-}
-</script>
+    <!-- E6 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E6</div>
+        <div class="enh-content">
+          <div class="enh-title">Completion State / Content Reveal</div>
+          <div class="enh-subtitle">Post-practice synthesis triggered by question completion — a verdict card, summary, or Real Talk callout that appears after the learner has answered all questions on a page. Currently all post-practice content must be always-visible, reducing its impact.</div>
+          <div class="enh-meta">
+            <span class="tag tag-med">Medium priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p2">Phase 2</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+    <!-- E7 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E7</div>
+        <div class="enh-content">
+          <div class="enh-title">Hotspot on Formatted Text</div>
+          <div class="enh-subtitle">Clickable claims directly within AI output cards — learners click on specific flagged statistics, named organizations, or attributed quotes to see SIFT verification prompts. Currently hotspot questions require a static image base; styled HTML text cannot be used as a hotspot target without export to image.</div>
+          <div class="enh-meta">
+            <span class="tag tag-med">Medium priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p2">Phase 2</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>LearningExpress · AI Literacy Initiative · Platform Enhancements</span>
+    <span>May 2026 · 7 items · 2 docs complete</span>
+  </div>
+
+</div>
 </body>
 </html>
