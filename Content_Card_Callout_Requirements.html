@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Card Callout — Style Requirements</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* AI Literacy palette */
+  --coral:      #F76C6C;
+  --coral-lt:   #FEF0F0;
+  --navy:       #374785;
+  --deep-navy:  #24305E;
+  --sky:        #A8D0E6;
+  --sky-lt:     #EDF6FB;
+  --butter:     #F8E9A1;
+  --butter-lt:  #FEFAE6;
+  --butter-dk:  #B5952E;
+  --slate:      #6B7FA3;
+  --rule:       #D1D8E8;
+  --warm-gray:  #F5F5F5;
+  --green:      #2A9D8F;
+  --green-lt:   #EAF7F5;
+  --amber:      #B5952E;
+  --amber-lt:   #FEF9EE;
+  --white:      #ffffff;
+  --font-head:  'Merriweather', Georgia, serif;
+  --font-body:  'Open Sans', -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: #ECEEF4; color: var(--deep-navy); font-size: 15px; line-height: 1.65; }
+
+.shell { max-width: 1060px; margin: 0 auto; padding: 0 32px 100px; }
+
+/* ── COVER ── */
+.cover { background:var(--deep-navy); border-radius:12px; padding:48px 52px; margin:32px 0 44px; position:relative; overflow:hidden; }
+.cover::before { content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; border-radius:50%; background:rgba(248,233,161,.06); }
+.cover-eyebrow { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--butter); margin-bottom:12px; }
+.cover-title { font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--white); line-height:1.25; margin-bottom:8px; }
+.cover-sub { font-size:15px; color:rgba(255,255,255,.55); margin-bottom:24px; }
+.cover-tags { display:flex; gap:10px; flex-wrap:wrap; }
+.ctag { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
+.ctag-coral  { background:var(--coral); color:#fff; }
+.ctag-sky    { background:rgba(168,208,230,.18); color:var(--sky); border:1px solid rgba(168,208,230,.3); }
+
+/* ── CHAPTER ── */
+.chapter { margin-bottom:52px; }
+.chapter-hd { display:flex; align-items:center; gap:0; margin-bottom:28px; }
+.ch-num { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; background:var(--coral); padding:7px 16px; border-radius:4px 0 0 4px; }
+.ch-bar { flex:1; background:var(--deep-navy); padding:10px 20px; border-radius:0 6px 6px 0; }
+.ch-title { font-family:var(--font-head); font-size:17px; font-weight:700; color:#fff; }
+
+/* ── PROSE ── */
+.sec { margin-bottom:28px; }
+.sec-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--deep-navy); padding-bottom:8px; border-bottom:2px solid var(--rule); margin-bottom:14px; }
+.sec-body { font-size:14px; line-height:1.75; margin-bottom:10px; }
+
+/* ── TABLES ── */
+.spec-table { width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:16px; }
+.spec-table th { background:var(--deep-navy); color:#fff; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:10px 14px; text-align:left; }
+.spec-table td { padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.6; }
+.spec-table tr:last-child td { border-bottom:none; }
+.spec-table tr:nth-child(even) td { background:var(--warm-gray); }
+.spec-table code { font-family:'Courier New', monospace; font-size:12px; background:#EEF0FA; padding:2px 6px; border-radius:3px; color:var(--navy); }
+
+/* ── CALLOUT (doc chrome) ── */
+.callout { padding:14px 18px; border-radius:0 8px 8px 0; border-left:4px solid; margin-bottom:20px; font-size:13.5px; line-height:1.65; }
+.callout-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; }
+.c-sky   { background:var(--sky-lt);   border-color:var(--sky);   }
+.c-sky   .callout-label { color:var(--navy); }
+.c-amber { background:var(--amber-lt); border-color:var(--amber); }
+.c-amber .callout-label { color:var(--amber); }
+.c-navy  { background:#EEF0FA;         border-color:var(--navy);  }
+.c-navy  .callout-label { color:var(--navy); }
+
+/* ── DEMO FRAME ── */
+.demo-wrap { margin:20px 0 24px; }
+.demo-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.demo-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+.platform-frame { width:660px; background:var(--white); border:1.5px solid var(--rule); border-radius:8px; padding:24px; }
+.platform-frame-full { width:100%; background:var(--white); border:1.5px solid var(--rule); border-radius:8px; padding:24px; }
+
+/* ── EXISTING CALLOUT (reference) ── */
+.existing-callout {
+  padding: 14px 18px;
+  border-left: 4px solid;
+  border-radius: 0 6px 6px 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.existing-callout .ec-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.existing-callout .ec-text {}
+.existing-callout .ec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: 3px;
+}
+
+/* ════════════════════════════════════════════
+   CONTENT CARD CALLOUT — THE NEW COMPONENT
+════════════════════════════════════════════ */
+
+/* Base card structure */
+.cc {
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--deep-navy);
+}
+
+/* Border variants */
+.cc-border-none   { border: none; }
+.cc-border-full   { border: 2.5px solid; }
+.cc-border-left   { border-left: 5px solid; border-top: 1px solid; border-bottom: 1px solid; border-right: 1px solid; }
+.cc-border-left-only { border-left: 5px solid; border-top: none; border-bottom: none; border-right: none; }
+
+/* Color variants — background + border color */
+.cc-coral  { background: var(--coral-lt);  --cc-accent: var(--coral);  border-color: var(--coral); }
+.cc-sky    { background: var(--sky-lt);    --cc-accent: var(--sky);    border-color: var(--sky); }
+.cc-navy   { background: #EEF0FA;          --cc-accent: var(--navy);   border-color: var(--navy); }
+.cc-butter { background: var(--butter-lt); --cc-accent: var(--butter-dk); border-color: var(--butter-dk); }
+.cc-green  { background: var(--green-lt);  --cc-accent: var(--green);  border-color: var(--green); }
+.cc-amber  { background: var(--amber-lt);  --cc-accent: var(--amber);  border-color: var(--amber); }
+.cc-gray   { background: var(--warm-gray); --cc-accent: var(--slate);  border-color: var(--slate); }
+
+/* Title row — icon + title on same line, both top-aligned */
+.cc-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.cc-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1.3;
+  margin-top: 1px; /* nudge to align with title cap-height */
+}
+.cc-icon-sm {
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+.cc-title {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep-navy);
+  line-height: 1.3;
+}
+/* When no icon — title sits flush left */
+.cc-title-only {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep-navy);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+/* Body text */
+.cc-body { font-size: 13.5px; line-height: 1.7; color: var(--deep-navy); }
+.cc-body p + p { margin-top: 8px; }
+.cc-body ul { padding-left: 18px; margin-top: 6px; display: flex; flex-direction: column; gap: 5px; }
+.cc-body li { font-size: 13.5px; line-height: 1.6; }
+
+/* When icon is present, body indents to align with title text */
+.cc-body-indented { padding-left: 30px; font-size: 13.5px; line-height: 1.7; color: var(--deep-navy); }
+.cc-body-indented p + p { margin-top: 8px; }
+.cc-body-indented ul { padding-left: 18px; margin-top: 6px; display: flex; flex-direction: column; gap: 5px; }
+.cc-body-indented li { font-size: 13.5px; line-height: 1.6; }
+
+/* Small icon variant — body does NOT indent */
+.cc-body-sm-indent { padding-left: 26px; font-size: 13.5px; line-height: 1.7; color: var(--deep-navy); }
+
+/* Top border variant */
+.cc-border-top {
+  border-top: 5px solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0 0 8px 8px;
+  background: var(--white);
+  padding-top: 0;
+  overflow: hidden;
+}
+/* Top border header band — holds title + pill */
+.cc-top-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0;
+  background: inherit;
+}
+.cc-top-band-title {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep-navy);
+  line-height: 1.3;
+}
+.cc-top-body {
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--deep-navy);
+}
+.cc-top-body p + p { margin-top: 8px; }
+.cc-top-body ul { padding-left: 18px; margin-top: 6px; display: flex; flex-direction: column; gap: 5px; }
+.cc-top-body li { font-size: 13.5px; line-height: 1.6; }
+
+/* Glowing border */
+.cc-border-glow {
+  border: 2px solid;
+  box-shadow: 0 0 0 3px rgba(var(--cc-glow-rgb), .18), 0 0 12px 2px rgba(var(--cc-glow-rgb), .12);
+}
+.cc-coral.cc-border-glow  { --cc-glow-rgb: 247,108,108; }
+.cc-sky.cc-border-glow    { --cc-glow-rgb: 168,208,230; }
+.cc-navy.cc-border-glow   { --cc-glow-rgb: 55,71,133; }
+.cc-butter.cc-border-glow { --cc-glow-rgb: 181,149,46; }
+.cc-green.cc-border-glow  { --cc-glow-rgb: 42,157,143; }
+.cc-amber.cc-border-glow  { --cc-glow-rgb: 181,149,46; }
+
+/* Example callout — left border only, no radius, label + pill inline */
+.cc-example {
+  border-left: 4px solid;
+  padding: 12px 16px;
+  border-radius: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--deep-navy);
+}
+.cc-example-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+  flex-wrap: wrap;
+}
+.cc-example-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+.cc-example-body { font-size: 13.5px; line-height: 1.65; }
+
+/* ── PILL TAG ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+  flex-shrink: 0;
+}
+/* Audience lens pills */
+.pill-student   { background: #EEF0FA; color: var(--navy);   border-color: var(--navy); }
+.pill-jobseeker { background: var(--amber-lt); color: var(--amber); border-color: var(--amber); }
+.pill-everyday  { background: var(--green-lt); color: var(--green); border-color: var(--green); }
+/* Generic context pills */
+.pill-coral  { background: var(--coral-lt);  color: var(--coral);  border-color: var(--coral); }
+.pill-sky    { background: var(--sky-lt);    color: var(--navy);   border-color: var(--sky); }
+.pill-navy   { background: #EEF0FA;          color: var(--navy);   border-color: var(--navy); }
+.pill-green  { background: var(--green-lt);  color: var(--green);  border-color: var(--green); }
+.pill-amber  { background: var(--amber-lt);  color: var(--amber);  border-color: var(--amber); }
+.pill-gray   { background: var(--warm-gray); color: var(--slate);  border-color: var(--rule); }
+/* Multiple pills inline */
+.pill-row { display: flex; gap: 5px; flex-wrap: wrap; }
+/* Make It Real — glowing border in butter/amber */
+.cc-make-it-real {
+  background: var(--white);
+  border: 2px solid var(--butter-dk);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: 0 0 0 4px rgba(181,149,46,.15), 0 0 16px 2px rgba(181,149,46,.1);
+}
+
+/* The Big Idea */
+.cc-big-idea {
+  background: #EDF1F7;
+  border: 1.5px solid #C8D3E8;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+.cc-big-idea-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--slate);
+  margin-bottom: 8px; display: block;
+}
+.cc-big-idea-body {
+  font-size: 14px; line-height: 1.7; color: var(--deep-navy);
+}
+
+/* Strong / Weak label bars */
+.sw-label-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 14px; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  border-radius: 6px 6px 0 0;
+}
+.sw-label-bar.strong { background: var(--green-lt); color: var(--green); border: 1.5px solid var(--green); border-bottom: none; }
+.sw-label-bar.weak   { background: var(--coral-lt); color: var(--coral); border: 1.5px solid var(--coral); border-bottom: none; }
+.sw-content {
+  padding: 14px 16px; font-size: 13.5px; line-height: 1.65;
+  border: 1.5px solid; border-top: none;
+  border-radius: 0 0 6px 6px;
+  color: var(--deep-navy); background: var(--white);
+}
+.sw-content.strong-c { border-color: var(--green); }
+.sw-content.weak-c   { border-color: var(--coral); }
+.sw-pair { display: flex; flex-direction: column; gap: 12px; }
+.sw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sw-icon { font-size: 13px; }
+
+.preset-grid { display: flex; flex-direction: column; gap: 32px; }
+.preset-card { background: var(--white); border: 1.5px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.preset-header { display: flex; align-items: stretch; background: var(--deep-navy); }
+.preset-name-block { padding: 14px 20px; flex: 1; }
+.preset-name { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.preset-desc { font-size: 12px; color: rgba(255,255,255,.5); }
+.preset-tags { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; justify-content: center; }
+.ptag { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
+.ptag-coral  { background: var(--coral-lt);  color: var(--coral);  border: 1px solid var(--coral); }
+.ptag-sky    { background: var(--sky-lt);    color: var(--navy);   border: 1px solid var(--sky); }
+.ptag-navy   { background: #EEF0FA;          color: var(--navy);   border: 1px solid var(--navy); }
+.ptag-amber  { background: var(--amber-lt);  color: var(--amber);  border: 1px solid var(--amber); }
+.ptag-gray   { background: var(--warm-gray); color: var(--slate);  border: 1px solid var(--rule); }
+.ptag-green  { background: var(--green-lt);  color: var(--green);  border: 1px solid var(--green); }
+.preset-body { padding: 20px 22px; }
+.preset-row { display: flex; gap: 28px; margin-bottom: 20px; flex-wrap: wrap; }
+.preset-spec { flex: 1; min-width: 200px; }
+.preset-spec-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
+.prod-note-block { background: var(--warm-gray); border-radius: 6px; padding: 12px 14px; font-family: 'Courier New', monospace; font-size: 12.5px; line-height: 1.6; color: var(--deep-navy); margin-top: 12px; }
+.prod-note-block .pn-label { font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--coral); margin-bottom: 5px; }
+.prod-note-block .pn-comment { color: var(--slate); font-style: italic; }
+
+/* color swatch row */
+.swatch-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.swatch { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.swatch-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.1); flex-shrink: 0; }
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 28px 0; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-eyebrow">LearningExpress · AI Literacy Microlessons · Style Spec</div>
+    <div class="cover-title">Content Card Callout<br>New Style Requirements</div>
+    <div class="cover-sub">A flexible, title-first callout designed for longer instructional content — extends the existing Highlight Box system with the AI literacy color palette · May 2026</div>
+    <div class="cover-tags">
+      <span class="ctag ctag-coral">New Component</span>
+      <span class="ctag ctag-sky">AI Literacy Palette</span>
+      <span class="ctag ctag-sky">5 Named Presets</span>
+      <span class="ctag ctag-sky">Full Spec + Mockups</span>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════
+       PART 1: CONTEXT
+  ═════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Context</span>
+      <div class="ch-bar"><div class="ch-title">What this adds and why</div></div>
+    </div>
+
+    <p class="sec-body">The existing Highlight Box (callout) style is designed for short, single-idea content — a tip, a warning, a reminder. It works well at one to three lines. The AI literacy modules introduced a need for a callout that can hold substantially more content: action steps with bulleted instructions, scenario prompts, strategy explanations, and synthesis moments. The existing callout doesn't scale to this gracefully.</p>
+    <p class="sec-body">The <strong>Content Card Callout</strong> fills that gap. It is additive — it does not replace the existing Highlight Box. The two styles serve different purposes and can appear on the same page.</p>
+
+    <div class="callout c-sky">
+      <div class="callout-label">Relationship to existing styles</div>
+      The existing Highlight Box remains unchanged. The Content Card Callout is a new style entry in the platform style system, with its own prod note notation. It inherits the AI literacy color palette and shares the left-accent border language of the existing system but introduces a mandatory title field and support for richer body content.
+    </div>
+
+    <div class="sec">
+      <div class="sec-title">Key differences from existing Highlight Box</div>
+      <table class="spec-table">
+        <tr><th>Property</th><th>Existing Highlight Box</th><th>Content Card Callout (new)</th></tr>
+        <tr><td>Title / label</td><td>Fixed preset name (Real Talk, Pro Move, etc.) — optional</td><td>Required — author-defined, displayed in Merriweather bold</td></tr>
+        <tr><td>Body length</td><td>1–3 lines optimized</td><td>2–8 lines, supports lists and multi-paragraph</td></tr>
+        <tr><td>Border</td><td>Left border only (default)</td><td>Left only · Full border · None — author's choice</td></tr>
+        <tr><td>Icon</td><td>Preset icon per callout name</td><td>Optional — author specifies or omits; always top-aligned</td></tr>
+        <tr><td>Icon alignment</td><td>Middle (works at short lengths)</td><td>Top only — correct for multi-line body text</td></tr>
+        <tr><td>Color palette</td><td>Blue, Purple, Green, Grey, Red, White</td><td>AI literacy palette: Coral, Sky, Navy, Butter, Green, Amber, Gray</td></tr>
+        <tr><td>Prod note</td><td><code>Callout Style (Real Talk; green background)</code></td><td><code>Content Card (preset name OR custom options)</code></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+
+  <!-- ════════════════════════════
+       PART 2: FULL FLEXIBLE SPEC
+  ═════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Part 1</span>
+      <div class="ch-bar"><div class="ch-title">Full Flexible Specification</div></div>
+    </div>
+
+    <div class="callout c-amber">
+      <div class="callout-label">For developers</div>
+      This section defines all available options. Content authors use the named presets in Part 2 rather than specifying options manually — presets are pre-filled combinations of these settings. The developer needs the full spec; the author only needs the preset names.
+    </div>
+
+    <!-- BORDER OPTIONS -->
+    <div class="sec">
+      <div class="sec-title">Border Options</div>
+      <table class="spec-table">
+        <tr><th>Option</th><th>Prod note value</th><th>CSS behavior</th><th>When to use</th></tr>
+        <tr><td><strong>Left only</strong> (default)</td><td><code>leftBorder</code></td><td>5px solid left; 1px Rule Blue top/right/bottom</td><td>Most instructional callouts — matches existing callout language</td></tr>
+        <tr><td><strong>Full border</strong></td><td><code>fullBorder</code></td><td>2.5px solid all sides, same accent color</td><td>Activity containers, action steps — signals "do something here"</td></tr>
+        <tr><td><strong>Left border only</strong> (no other sides)</td><td><code>leftBorderOnly</code></td><td>5px solid left; no other borders</td><td>Floating callout feel; less structural weight</td></tr>
+        <tr><td><strong>Top border</strong></td><td><code>topBorder</code></td><td>5px solid top; no other borders; white background default</td><td>Scenario cards, content sections with header + body text and optional pill tag</td></tr>
+        <tr><td><strong>No border</strong></td><td><code>noBorder</code></td><td>Background fill only, no border lines</td><td>Subtle content cards; inside tables or constrained layouts</td></tr>
+        <tr><td><strong>Glowing border</strong></td><td><code>glowingBorder</code></td><td>Existing platform glowing border effect applied to full perimeter; accent color glow</td><td>High-emphasis moments — use sparingly, max one per page</td></tr>
+      </table>
+
+      <div class="demo-wrap">
+        <div class="demo-label">All border options — 660px</div>
+        <div class="platform-frame">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="cc cc-coral cc-border-left">
+              <div class="cc-title-only">Left Border (default)</div>
+              <div class="cc-body">5px solid left · 1px Rule Blue on other sides. The standard instructional callout treatment.</div>
+            </div>
+            <div class="cc cc-coral cc-border-full">
+              <div class="cc-title-only">Full Border</div>
+              <div class="cc-body">2.5px solid all sides. Signals a contained activity or action step.</div>
+            </div>
+            <div class="cc cc-coral cc-border-left-only">
+              <div class="cc-title-only">Left Border Only</div>
+              <div class="cc-body">5px solid left, no other border lines. Lighter visual weight.</div>
+            </div>
+            <div class="cc cc-coral cc-border-top" style="border-top-color:var(--coral);">
+              <div class="cc-top-band" style="border-bottom-color:var(--rule);">
+                <span class="cc-top-band-title">Top Border</span>
+                <span class="pill pill-student">Student</span>
+              </div>
+              <div class="cc-top-body">5px solid top, white background, rounded bottom corners. The top band holds the title and optional pill tag. Used for scenario cards and content sections.</div>
+            </div>
+            <div class="cc cc-coral cc-border-none" style="background:var(--coral-lt);">
+              <div class="cc-title-only">No Border</div>
+              <div class="cc-body">Background fill only. Most subtle — good inside constrained layouts.</div>
+            </div>
+            <div class="cc cc-coral cc-border-glow" style="background:var(--coral-lt);">
+              <div class="cc-title-only">Glowing Border</div>
+              <div class="cc-body">Full border with a soft glow in the accent color. High-emphasis — use sparingly, max one per page.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLOR OPTIONS -->
+    <div class="sec">
+      <div class="sec-title">Color Options — AI Literacy Palette</div>
+      <table class="spec-table">
+        <tr><th>Color name</th><th>Prod note value</th><th>Border / accent</th><th>Background</th><th>Semantic role</th></tr>
+        <tr><td><strong>Coral</strong></td><td><code>coral</code></td><td>#F76C6C</td><td>#FEF0F0</td><td>Action, urgency, AI literacy identity. Real Talk, key warnings.</td></tr>
+        <tr><td><strong>Sky</strong></td><td><code>sky</code></td><td>#A8D0E6</td><td>#EDF6FB</td><td>Informational, structural. Intro callouts, neutral content.</td></tr>
+        <tr><td><strong>Navy</strong></td><td><code>navy</code></td><td>#374785</td><td>#EEF0FA</td><td>Pro moves, strategic tips, forward-pointing guidance.</td></tr>
+        <tr><td><strong>Butter / Amber</strong></td><td><code>butter</code></td><td>#B5952E</td><td>#FEFAE6</td><td>Activity containers, action steps, Make It Real.</td></tr>
+        <tr><td><strong>Green</strong></td><td><code>green</code></td><td>#2A9D8F</td><td>#EAF7F5</td><td>Completion states, verification results, positive outcomes.</td></tr>
+        <tr><td><strong>Amber</strong></td><td><code>amber</code></td><td>#B5952E</td><td>#FEF9EE</td><td>Caution, verify-before-acting, medium-risk signals.</td></tr>
+        <tr><td><strong>Gray</strong></td><td><code>gray</code></td><td>#6B7FA3</td><td>#F5F5F5</td><td>Neutral supplemental content, secondary notes.</td></tr>
+      </table>
+
+      <div class="demo-wrap">
+        <div class="demo-label">All color options — left border, no icon, 660px</div>
+        <div class="platform-frame">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="cc cc-coral cc-border-left"><div class="cc-title-only">Coral — Action / Urgency / AI Identity</div><div class="cc-body">Used for Real Talk, key warnings, and AI literacy identity moments.</div></div>
+            <div class="cc cc-sky cc-border-left"><div class="cc-title-only">Sky — Informational / Structural</div><div class="cc-body">Used for introductory callouts, neutral instructional content, and context-setting.</div></div>
+            <div class="cc cc-navy cc-border-left"><div class="cc-title-only">Navy — Pro Move / Strategic</div><div class="cc-body">Used for professional tips, forward-pointing guidance, and What's Next callouts.</div></div>
+            <div class="cc cc-butter cc-border-left"><div class="cc-title-only">Butter — Activity / Action Step</div><div class="cc-body">Used for Make It Real containers and any "do something now" moment.</div></div>
+            <div class="cc cc-green cc-border-left"><div class="cc-title-only">Green — Completion / Positive Outcome</div><div class="cc-body">Used for verdicts, correct states, and verified information summaries.</div></div>
+            <div class="cc cc-amber cc-border-left"><div class="cc-title-only">Amber — Caution / Verify</div><div class="cc-body">Used for "use with caution" verdicts and situations requiring additional verification.</div></div>
+            <div class="cc cc-gray cc-border-left"><div class="cc-title-only">Gray — Neutral / Supplemental</div><div class="cc-body">Used for secondary notes, example callouts, and reference material.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ICON OPTIONS -->
+    <div class="sec">
+      <div class="sec-title">Icon Options</div>
+      <table class="spec-table">
+        <tr><th>Option</th><th>Prod note value</th><th>Size</th><th>Alignment</th><th>Body indent</th></tr>
+        <tr><td><strong>No icon</strong> (default)</td><td><code>noIcon</code></td><td>—</td><td>—</td><td>None — body starts flush with left padding</td></tr>
+        <tr><td><strong>Standard icon</strong></td><td><code>icon: [filename.svg]</code></td><td>20px</td><td>Top-aligned to title cap-height</td><td>Body indents to align with title text (~30px)</td></tr>
+        <tr><td><strong>Small icon</strong></td><td><code>smallIcon: [filename.svg]</code></td><td>16px</td><td>Top-aligned to title cap-height</td><td>Body does not indent — icon is decorative only</td></tr>
+        <tr><td><strong>Custom image</strong></td><td><code>customIcon: [filename.svg]</code></td><td>20px default, scalable</td><td>Top-aligned</td><td>Same as standard icon</td></tr>
+      </table>
+
+      <div class="callout c-navy">
+        <div class="callout-label">Icon alignment rule</div>
+        Icons are <strong>always top-aligned</strong> in Content Card Callouts. Middle alignment is only appropriate for single-line callouts (existing Highlight Box at short lengths). For multi-line content, middle alignment floats the icon in whitespace and breaks the visual relationship with the title.
+      </div>
+
+      <div class="demo-wrap">
+        <div class="demo-label">Icon variants — navy, full border, 660px</div>
+        <div class="platform-frame">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+
+            <!-- No icon -->
+            <div class="cc cc-navy cc-border-full">
+              <div class="cc-title-only">No Icon — Title Only</div>
+              <div class="cc-body"><p>Title sits flush with the left edge of the content area. Clean and direct. Best for activity containers and action steps where the content itself is the focus.</p></div>
+            </div>
+
+            <!-- Standard icon -->
+            <div class="cc cc-navy cc-border-full">
+              <div class="cc-header">
+                <span class="cc-icon">⚡</span>
+                <span class="cc-title">Standard Icon — Top Aligned</span>
+              </div>
+              <div class="cc-body-indented">
+                <p>Icon (20px) sits at the top, aligned to the title's cap-height. Body text indents to align with the start of the title text. Works for 2–6 lines of body content without awkward floating.</p>
+              </div>
+            </div>
+
+            <!-- Small icon -->
+            <div class="cc cc-navy cc-border-full">
+              <div class="cc-header">
+                <span class="cc-icon-sm">📋</span>
+                <span class="cc-title">Small Icon — Top Aligned, No Body Indent</span>
+              </div>
+              <div class="cc-body">
+                <p>Small icon (16px) anchored to title. Body text does not indent — the small icon is decorative and does not create a column break. Use when the icon adds context without structuring the layout.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TITLE SPEC -->
+    <div class="sec">
+      <div class="sec-title">Title Field</div>
+      <table class="spec-table">
+        <tr><th>Property</th><th>Specification</th></tr>
+        <tr><td>Required</td><td>Yes — always present. This is the key structural difference from the existing Highlight Box.</td></tr>
+        <tr><td>Font</td><td>Merriweather, 15px, bold, Deep Navy #24305E</td></tr>
+        <tr><td>Line-height</td><td>1.3 — tighter than body to read as a heading</td></tr>
+        <tr><td>Content</td><td>Author-defined plain text. Not a preset label. Max 6 words recommended.</td></tr>
+        <tr><td>When icon present</td><td>Title sits on the same line as the icon, top-aligned</td></tr>
+        <tr><td>When no icon</td><td>Title sits full-width, no indentation, bottom margin 10px before body</td></tr>
+      </table>
+    </div>
+
+    <!-- PROD NOTE NOTATION -->
+    <div class="sec">
+      <div class="sec-title">Prod Note Notation</div>
+      <p class="sec-body">Content authors use either a named preset (recommended, see Part 2) or specify options manually for custom combinations.</p>
+
+      <div class="prod-note-block">
+        <div class="pn-label">Named preset (recommended)</div>
+        Content Card (Make It Real)<br>
+        Title: Make It Real<br>
+        Body: [content]<br><br>
+        <span class="pn-comment">// Loader uses preset defaults — no additional options needed</span>
+      </div>
+
+      <div class="prod-note-block">
+        <div class="pn-label">Custom specification</div>
+        Content Card (coral; fullBorder; noIcon)<br>
+        Title: [author title]<br>
+        Body: [content]<br><br>
+        <span class="pn-comment">// Color; border option; icon option</span><br><br>
+        Content Card (navy; leftBorder; smallIcon: lightning.svg)<br>
+        Title: [author title]<br>
+        Body: [content]
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════
+       PART 2: NAMED PRESETS
+  ═════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Part 2</span>
+      <div class="ch-bar"><div class="ch-title">Named Presets — Author Reference</div></div>
+    </div>
+
+    <p class="sec-body" style="margin-bottom:20px;">These five presets cover the most common Content Card use cases in AI literacy content. Each is a pre-filled combination of color, border, and icon settings. Content authors use the preset name in the prod note — no additional options needed unless customizing.</p>
+
+    <div class="preset-grid">
+
+      <!-- PRESET 1: MAKE IT REAL -->
+      <div class="preset-card">
+        <div class="preset-header">
+          <div style="background:var(--amber);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">🎯</div>
+          <div class="preset-name-block">
+            <div class="preset-name">Make It Real</div>
+            <div class="preset-desc">Activity containers and action steps — prompts the learner to do something with what they've learned</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-amber">Butter / Amber</span>
+            <span class="ptag ptag-gray">Full border</span>
+            <span class="ptag ptag-gray">No icon</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Color</td><td>Butter / Amber (#B5952E)</td></tr>
+                <tr><td>Border</td><td>Glowing border — 2px solid amber + outer glow shadow in amber. White background.</td></tr>
+                <tr><td>Icon</td><td>None</td></tr>
+                <tr><td>Title</td><td>Author-defined — typically "Make It Real" or a specific action name</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">End-of-section activity prompts where the learner applies what they just learned to their real life context. Full border signals "this is a task, not just information." Butter color is warm and forward-moving without urgency.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note</div>
+            Content Card (Make It Real)<br>
+            Title: Make It Real<br>
+            Body: [activity instructions, can include lists]
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Live mockup at 660px</div>
+            <div class="platform-frame">
+              <div class="cc-make-it-real">
+                <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:var(--deep-navy);margin-bottom:12px;">Make It Real</div>
+                <div class="cc-body">
+                  <p>Now it's time to apply what you've learned.</p>
+                  <p style="margin-top:8px;"><strong>Your action step:</strong></p>
+                  <p style="margin-top:6px;">Find a job posting you're interested in (or one you've recently applied to). Identify the three audiences who will read your cover letter for that position. Then answer these questions:</p>
+                  <ul style="margin-top:8px;">
+                    <li>What keywords from the job description should you include?</li>
+                    <li>What qualifications will the recruiter prioritize?</li>
+                    <li>What research can you do to understand what the hiring manager cares about?</li>
+                  </ul>
+                  <p style="margin-top:8px;">Write down your answers. You'll use them as a foundation when you start drafting your cover letter in the next microlesson.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESET 3: REAL TALK -->
+      <div class="preset-card">
+        <div class="preset-header">
+          <div style="background:var(--navy);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">💬</div>
+          <div class="preset-name-block">
+            <div class="preset-name">Real Talk</div>
+            <div class="preset-desc">Honest, unvarnished implications — longer version of the existing Real Talk callout for when the point needs more than one line</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-coral">Coral</span>
+            <span class="ptag ptag-gray">Left border only</span>
+            <span class="ptag ptag-gray">No icon</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="callout c-sky" style="margin-bottom:16px;">
+            <div class="callout-label">Existing platform note</div>
+            The Real Talk style shown in the AI literacy mockups — sky/light blue background, coral left border, coral bold title, body text — is achievable with the <strong>existing Highlight Box</strong> using: <code>Callout Style (Real Talk; sky background)</code>. No new component required for that treatment. This Content Card preset is the longer-form version for when the content runs 3+ lines.
+          </div>
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Color</td><td>Coral</td></tr>
+                <tr><td>Border</td><td>Left border only (no right/top/bottom — floating feel)</td></tr>
+                <tr><td>Icon</td><td>None</td></tr>
+                <tr><td>Title</td><td>"Real Talk" — fixed label for this preset</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">Closing a practice section or lesson with an honest summary of why something matters. Use when the Real Talk content runs 3+ lines — more than the existing short callout can hold comfortably. The left-border-only treatment gives it a distinct "aside" quality.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note</div>
+            Content Card (Real Talk)<br>
+            Title: Real Talk<br>
+            Body: [honest implication — can run to 4–6 lines]<br><br>
+            <span class="pn-comment">// Short Real Talk (1–2 lines): use existing Callout Style (Real Talk; sky background)</span>
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Live mockup at 660px</div>
+            <div class="platform-frame">
+              <div class="cc cc-coral cc-border-left-only" style="background:var(--sky-lt);">
+                <div class="cc-title-only" style="color:var(--coral);">Real Talk</div>
+                <div class="cc-body">
+                  AI hallucinations are most dangerous when they're almost right. A made-up statistic that's close to a real one is harder to catch — and more likely to end up in your work unchecked. The goal of SIFT isn't to make you distrust everything. It's to give you a consistent habit for the moments that actually carry risk.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESET 4: WHAT'S NEXT -->
+      <div class="preset-card">
+        <div class="preset-header">
+          <div style="background:var(--sky);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">→</div>
+          <div class="preset-name-block">
+            <div class="preset-name">What's Next</div>
+            <div class="preset-desc">Lesson or module closing callout — bridges forward to the next lesson</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-sky">Sky</span>
+            <span class="ptag ptag-navy">Navy left border</span>
+            <span class="ptag ptag-gray">No icon</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Color</td><td>Sky (background) + Navy (border accent) — an exception to the single-color rule; the contrast signals "this is a structural transition, not a content callout"</td></tr>
+                <tr><td>Border</td><td>Left border only, Navy (not Sky)</td></tr>
+                <tr><td>Icon</td><td>None</td></tr>
+                <tr><td>Title</td><td>"What's Next" — fixed label. Followed by the next lesson's full name in bold.</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">Summary page only — the last callout on the last page of any lesson. Names the next lesson by title for the first and only time in the current lesson. Sky background + navy border distinguish it from content callouts — it reads as a structural transition, not instructional content.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note</div>
+            Content Card (What's Next)<br>
+            Title: What's Next<br>
+            Body: [next lesson full title in bold, then 1–2 sentences previewing it]
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Live mockup at 660px</div>
+            <div class="platform-frame">
+              <div class="cc cc-sky cc-border-left-only" style="border-left-color:var(--navy);">
+                <div class="cc-title-only">What's Next</div>
+                <div class="cc-body">
+                  <p><strong>Microlesson 2.7: Putting It Together — Evaluating AI Content in Real Life</strong></p>
+                  <p style="margin-top:6px;">In the next lesson, you'll apply everything from ML 2.1–2.6 to a single extended scenario from start to finish. Choose your context — student, job seeker, or everyday life — and work through a realistic situation where multiple evaluation skills come into play at once.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /preset-grid -->
+
+      <!-- PRESET: THE BIG IDEA -->
+      <div class="preset-card" style="margin-top:12px;">
+        <div class="preset-header">
+          <div style="background:#6B7FA3;padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">💡</div>
+          <div class="preset-name-block">
+            <div class="preset-name">The Big Idea</div>
+            <div class="preset-desc">A soft rounded card with an ALL CAPS label — surfaces the central concept or key takeaway of a section without urgency or action</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-gray">Blue-gray</span>
+            <span class="ptag ptag-gray">Full border</span>
+            <span class="ptag ptag-gray">No icon</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Color</td><td>Blue-gray — background #EDF1F7, border #C8D3E8. Neutral, not accent-color driven.</td></tr>
+                <tr><td>Border</td><td>Full border, 1.5px, soft blue-gray</td></tr>
+                <tr><td>Icon</td><td>None</td></tr>
+                <tr><td>Label</td><td>ALL CAPS, slate/gray, 11px, letter-spaced. "THE BIG IDEA" or author-defined label.</td></tr>
+                <tr><td>Body</td><td>14px body text, Deep Navy. No bold title — the ALL CAPS label is the structural anchor.</td></tr>
+                <tr><td>Border radius</td><td>10px — softer than other callouts, matching the platform's "Did You Know" card style.</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">Surfaces a core concept, central insight, or lesson-level takeaway. Not an action, not a warning — just a clear statement of what matters most. The neutral blue-gray background keeps it calm and readable. Ideal for opening or closing a content section with the essential idea.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note</div>
+            Content Card (The Big Idea)<br>
+            Label: THE BIG IDEA<br>
+            Body: [2–3 sentence core concept — no title, no icon]<br><br>
+            <span class="pn-comment">// Label is author-defined — can use "THE MAIN POINT", "KEY CONCEPT", etc.</span>
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Live mockup at 660px</div>
+            <div class="platform-frame">
+              <div class="cc-big-idea">
+                <span class="cc-big-idea-label">The Big Idea</span>
+                <div class="cc-big-idea-body">Verification isn't about distrust. It's about being someone who gets things right. A few simple habits are all it takes.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESET: STRONG / WEAK (DO / DON'T) -->
+      <div class="preset-card" style="margin-top:12px;">
+        <div class="preset-header">
+          <div style="background:var(--deep-navy);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">⇅</div>
+          <div class="preset-name-block">
+            <div class="preset-name">Strong / Weak · Do / Don't</div>
+            <div class="preset-desc">Paired comparison labels — green bar for positive example, coral bar for negative — stacked vertically or side-by-side</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-green">Green / Coral</span>
+            <span class="ptag ptag-gray">Paired labels</span>
+            <span class="ptag ptag-gray">Stacked or 2-col</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Label bar — positive</td><td>Green light bg, green text + border, ✓ icon. Labels: "STRONG PROMPT", "DO", "STRONG EXAMPLE", or author-defined.</td></tr>
+                <tr><td>Label bar — negative</td><td>Coral light bg, coral text + border, △ icon. Labels: "WEAK PROMPT", "DON'T", "WEAK EXAMPLE", or author-defined.</td></tr>
+                <tr><td>Content area</td><td>White background, matching border color (no top border — flows from label bar). 14px body text.</td></tr>
+                <tr><td>Layout</td><td>Stacked (negative above positive, or positive above negative) or 2-column grid side by side.</td></tr>
+                <tr><td>Icon</td><td>Built into the label bar — ✓ for positive, △ for negative. Not configurable separately.</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">Contrast-based instruction — showing learners what a good prompt, response, or behavior looks like vs. a weak one. Replaces prose like "a bad example would be… a better version is…" with a visual structure that makes the comparison immediately scannable. Works for prompt engineering, writing quality, AI verification decisions, and communication skills.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note — stacked</div>
+            Comparison (Weak / Strong; stacked)<br>
+            Weak label: WEAK PROMPT<br>
+            Weak body: [negative example]<br>
+            Strong label: STRONG PROMPT<br>
+            Strong body: [positive example]<br><br>
+            <div class="pn-label" style="margin-top:8px;">Prod note — side by side</div>
+            Comparison (Do / Don't; 2-col)<br>
+            Do label: DO<br>
+            Do body: [positive example]<br>
+            Don't label: DON'T<br>
+            Don't body: [negative example]
+          </div>
+          <div class="demo-wrap" style="margin-bottom:16px;">
+            <div class="demo-label">Variation 1 — Stacked (Weak above Strong) at 660px</div>
+            <div class="platform-frame">
+              <div class="sw-pair">
+                <div>
+                  <div class="sw-label-bar weak"><span class="sw-icon">△</span> Weak Prompt</div>
+                  <div class="sw-content weak-c">Write me something about climate change.</div>
+                </div>
+                <div>
+                  <div class="sw-label-bar strong"><span class="sw-icon">✓</span> Strong Prompt</div>
+                  <div class="sw-content strong-c">Summarize the three main conclusions of the 2023 IPCC Synthesis Report in plain language for a high school student. Cite section numbers if possible.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Variation 2 — Side by side (Do / Don't) at 660px</div>
+            <div class="platform-frame">
+              <div class="sw-grid">
+                <div>
+                  <div class="sw-label-bar strong"><span class="sw-icon">✓</span> Do</div>
+                  <div class="sw-content strong-c">Go to the organization's official website and search for the specific report or guidance the AI mentioned.</div>
+                </div>
+                <div>
+                  <div class="sw-label-bar weak"><span class="sw-icon">△</span> Don't</div>
+                  <div class="sw-content weak-c">Ask the AI to confirm whether its own summary is accurate.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESET 6: TOP BORDER CONTENT CARD -->
+      <div class="preset-card" style="margin-top:12px;">
+        <div class="preset-header">
+          <div style="background:var(--slate);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">🃏</div>
+          <div class="preset-name-block">
+            <div class="preset-name">Content Card (Top Border)</div>
+            <div class="preset-desc">White background card with a thick top accent border — header band holds title left and optional pill tag right, body text below</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-gray">Any color</span>
+            <span class="ptag ptag-gray">Top border</span>
+            <span class="ptag ptag-gray">Optional pill</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Color</td><td>Any palette color — sets the top border and pill accent color</td></tr>
+                <tr><td>Border</td><td>Top border only (5px solid, accent color). White background. Rounded bottom corners.</td></tr>
+                <tr><td>Icon</td><td>None — the top band itself provides visual structure</td></tr>
+                <tr><td>Header band</td><td>Title left (Merriweather 15px bold, Deep Navy) · Pill tag right (optional). Thin Rule Blue divider below band. <strong>Variation B:</strong> Header band filled with accent color — title and pill render in white.</td></tr>
+                <tr><td>Body</td><td>White bg, standard body text, full padding. Supports paragraphs and lists.</td></tr>
+                <tr><td>Pill</td><td>Optional. Right-aligned in the header band. Variation A: colored pill on white band. Variation B: white ghost pill on colored band.</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">Scenario content cards, AI output presentation, multi-paragraph content blocks that need a clear title but don't carry the instructional urgency of a left-border callout. The top border is more neutral — it organizes without signaling warning, tip, or action. Pill tag adds audience or context labeling.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note — Variation A (top border + gray outline)</div>
+            Content Card (topBorder; coral)<br>
+            Title: AI Research Summary<br>
+            Pill: Student<br>
+            Body: [content]<br><br>
+            <span class="pn-comment">// Pill is optional — omit the Pill line if not needed</span><br><br>
+            <div class="pn-label" style="margin-top:10px;">Prod note — Variation B (colored header band)</div>
+            Content Card (topBorder; coloredBand; coral)<br>
+            Title: AI Research Summary<br>
+            Pill: Student<br>
+            Body: [content]<br><br>
+            <span class="pn-comment">// coloredBand = filled accent color header; title and pill render white</span>
+          </div>
+          <div class="demo-wrap" style="margin-bottom:16px;">
+            <div class="demo-label">Variation A — top border + soft gray full border at 660px</div>
+            <div class="platform-frame">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+
+                <div style="border-top:5px solid var(--coral);border:1px solid #E0E0E0;border-top-width:5px;border-top-color:var(--coral);border-radius:8px;overflow:hidden;background:#fff;">
+                  <div class="cc-top-band">
+                    <span class="cc-top-band-title">AI Research Summary</span>
+                    <span class="pill pill-student">Student</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>An AI summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics can be traced to a real document.</p>
+                  </div>
+                </div>
+
+                <div style="border-top:5px solid var(--amber);border:1px solid #E0E0E0;border-top-width:5px;border-top-color:var(--amber);border-radius:8px;overflow:hidden;background:#fff;">
+                  <div class="cc-top-band">
+                    <span class="cc-top-band-title">Company Overview</span>
+                    <span class="pill pill-jobseeker">Job Seeker</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>An AI company overview for interview prep gives a founding year, employee count, and an award. The learner checks the company's own LinkedIn and website and finds two factual errors and an unverifiable award claim.</p>
+                  </div>
+                </div>
+
+                <div style="border-top:5px solid var(--green);border:1px solid #E0E0E0;border-top-width:5px;border-top-color:var(--green);border-radius:8px;overflow:hidden;background:#fff;">
+                  <div class="cc-top-band">
+                    <span class="cc-top-band-title">Health Claim — Family Chat</span>
+                    <span class="pill pill-everyday">Everyday Life</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>A health claim shared in a family chat attributes a specific dosage recommendation to the Mayo Clinic. The learner checks MayoClinic.org directly and finds the attribution is fabricated.</p>
+                  </div>
+                </div>
+
+                <div style="border-top:5px solid var(--navy);border:1px solid #E0E0E0;border-top-width:5px;border-top-color:var(--navy);border-radius:8px;overflow:hidden;background:#fff;">
+                  <div class="cc-top-band">
+                    <span class="cc-top-band-title">No Pill — Title Only</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>The pill is optional. When context labeling isn't needed, the header band holds just the title, left-aligned, with full width.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-wrap" style="margin-bottom:16px;">
+            <div class="demo-label">Variation B — colored background header band with white title and pill at 660px</div>
+            <div class="platform-frame">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+
+                <!-- Coral header band -->
+                <div style="border:1px solid #E0E0E0;border-radius:8px;overflow:hidden;background:#fff;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--coral);">
+                    <span style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#fff;line-height:1.3;">AI Research Summary</span>
+                    <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);white-space:nowrap;">Student</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>An AI summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics can be traced to a real document.</p>
+                  </div>
+                </div>
+
+                <!-- Amber header band -->
+                <div style="border:1px solid #E0E0E0;border-radius:8px;overflow:hidden;background:#fff;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--amber);">
+                    <span style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#fff;line-height:1.3;">Company Overview</span>
+                    <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);white-space:nowrap;">Job Seeker</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>An AI company overview for interview prep gives a founding year, employee count, and an award. The learner checks the company's own LinkedIn and website and finds two factual errors and an unverifiable award claim.</p>
+                  </div>
+                </div>
+
+                <!-- Green header band -->
+                <div style="border:1px solid #E0E0E0;border-radius:8px;overflow:hidden;background:#fff;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--green);">
+                    <span style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#fff;line-height:1.3;">Health Claim — Family Chat</span>
+                    <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);white-space:nowrap;">Everyday Life</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>A health claim shared in a family chat attributes a specific dosage recommendation to the Mayo Clinic. The learner checks MayoClinic.org directly and finds the attribution is fabricated.</p>
+                  </div>
+                </div>
+
+                <!-- Navy header band, no pill -->
+                <div style="border:1px solid #E0E0E0;border-radius:8px;overflow:hidden;background:#fff;">
+                  <div style="display:flex;align-items:center;padding:12px 16px;background:var(--navy);">
+                    <span style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#fff;line-height:1.3;">No Pill — Title Only</span>
+                  </div>
+                  <div class="cc-top-body">
+                    <p>Colored band without a pill. The white title reads clearly against any of the AI literacy palette colors at full saturation.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- GLOW VARIANT -->
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Glowing border variant — high-emphasis use</div>
+            <div class="platform-frame">
+              <div class="cc cc-sky cc-border-glow" style="padding:0;overflow:hidden;border-radius:8px;">
+                <div class="cc-top-band" style="border-top:4px solid var(--sky);border-bottom-color:var(--rule);background:var(--sky-lt);">
+                  <span class="cc-top-band-title">Key Insight</span>
+                  <span class="pill pill-coral">Important</span>
+                </div>
+                <div class="cc-top-body">
+                  <p>Glowing border applied to a Content Card. Use this for a single high-emphasis moment per page — the glow draws the eye and signals "don't skip this." Max one per page.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILL TAG REFERENCE -->
+      <div class="preset-card" style="margin-top:12px;">
+        <div class="preset-header">
+          <div style="background:var(--deep-navy);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">🏷️</div>
+          <div class="preset-name-block">
+            <div class="preset-name">Pill Tag</div>
+            <div class="preset-desc">Small inline label for audience lens, scenario context, or content type — sits in the top band of Top Border Content Cards, right-aligned. Also usable inline in other contexts.</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-gray">Inline element</span>
+            <span class="ptag ptag-gray">Broadly usable</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Spec</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Font</td><td>Open Sans, 10px, 700 bold, ALL CAPS, letter-spacing .08em</td></tr>
+                <tr><td>Padding</td><td>3px vertical · 10px horizontal</td></tr>
+                <tr><td>Border radius</td><td>20px (fully rounded)</td></tr>
+                <tr><td>Border</td><td>1.5px solid, same as text color</td></tr>
+                <tr><td>Position in card</td><td>Right-aligned in the top band header. Vertically centered with the title text.</td></tr>
+                <tr><td>Inline use</td><td>Can appear in body text, table cells, annotation tables, Show/Hide triggers, and example callouts.</td></tr>
+                <tr><td>Multiple pills</td><td>Use <code>.pill-row</code> wrapper with gap:5px for side-by-side pills.</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">Available pill types</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><th>Prod note value</th><th>Color</th><th>Use</th></tr>
+                <tr><td><code>Student</code></td><td>Navy light bg, Navy text</td><td>Audience lens</td></tr>
+                <tr><td><code>Job Seeker</code></td><td>Amber light, Amber text</td><td>Audience lens</td></tr>
+                <tr><td><code>Everyday Life</code></td><td>Green light, Green text</td><td>Audience lens</td></tr>
+                <tr><td><code>coral</code></td><td>Coral light, Coral text</td><td>Generic context / warning</td></tr>
+                <tr><td><code>sky</code></td><td>Sky light, Navy text</td><td>Generic context / info</td></tr>
+                <tr><td><code>navy</code></td><td>Navy light, Navy text</td><td>Generic context / pro</td></tr>
+                <tr><td><code>green</code></td><td>Green light, Green text</td><td>Generic context / positive</td></tr>
+                <tr><td><code>amber</code></td><td>Amber light, Amber text</td><td>Generic context / caution</td></tr>
+                <tr><td><code>gray</code></td><td>Warm gray, Slate text</td><td>Neutral / supplemental</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note</div>
+            Pill: Student<br>
+            Pill: Job Seeker<br>
+            Pill: Everyday Life<br>
+            Pill: [coral/sky/navy/green/amber/gray]; [label text]<br><br>
+            <span class="pn-comment">// For inline use outside a card: Pill (Student) after the element it labels</span><br>
+            <span class="pn-comment">// For multiple pills: Pill (Student); Pill (Job Seeker)</span>
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">All pill types at 660px</div>
+            <div class="platform-frame">
+              <div style="margin-bottom:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Audience lens pills</p>
+                <div class="pill-row">
+                  <span class="pill pill-student">Student</span>
+                  <span class="pill pill-jobseeker">Job Seeker</span>
+                  <span class="pill pill-everyday">Everyday Life</span>
+                </div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Generic context pills</p>
+                <div class="pill-row">
+                  <span class="pill pill-coral">Important</span>
+                  <span class="pill pill-sky">Informational</span>
+                  <span class="pill pill-navy">Pro Move</span>
+                  <span class="pill pill-green">Verified</span>
+                  <span class="pill pill-amber">Caution</span>
+                  <span class="pill pill-gray">Note</span>
+                </div>
+              </div>
+              <div>
+                <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Inline use in body text</p>
+                <p style="font-size:13.5px;line-height:1.7;">This scenario applies to job seekers. <span class="pill pill-jobseeker">Job Seeker</span> The learner checks the company's own website and finds two factual errors.</p>
+                <p style="font-size:13.5px;line-height:1.7;margin-top:8px;">Multiple pills side by side: <span class="pill-row" style="display:inline-flex;"><span class="pill pill-student">Student</span><span class="pill pill-everyday">Everyday Life</span></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESET: EXAMPLE CALLOUT -->
+      <div class="preset-card" style="margin-top:12px;">
+        <div class="preset-header">
+          <div style="background:var(--coral);padding:16px 18px;display:flex;align-items:center;min-width:52px;justify-content:center;font-size:22px;">↳</div>
+          <div class="preset-name-block">
+            <div class="preset-name">Example Callout</div>
+            <div class="preset-desc">Left border only, no border radius, light background — "Example" label and optional pill tag on the same line, body text below. Uses the existing Highlight Box structure with the new pill pattern.</div>
+          </div>
+          <div class="preset-tags">
+            <span class="ptag ptag-gray">Any color</span>
+            <span class="ptag ptag-gray">Left border only</span>
+            <span class="ptag ptag-gray">No corners</span>
+          </div>
+        </div>
+        <div class="preset-body">
+          <div class="callout c-sky" style="margin-bottom:16px;">
+            <div class="callout-label">Existing platform note</div>
+            This pattern uses the <strong>existing Highlight Box</strong> — no new component needed. The "Example" label and inline pill are author-specified text + the new Pill Tag element. What's new is documenting the label + pill combination as a named pattern with consistent formatting rules.
+          </div>
+          <div class="preset-row">
+            <div class="preset-spec">
+              <div class="preset-spec-label">Settings</div>
+              <table class="spec-table" style="margin-bottom:0;">
+                <tr><td>Color</td><td>Any palette color — sets the left border and background tint. Default: Warm Gray / Slate for a neutral example treatment.</td></tr>
+                <tr><td>Border</td><td>Left border only, 4px solid. No top, right, or bottom border. No border radius (square corners).</td></tr>
+                <tr><td>Icon</td><td>None</td></tr>
+                <tr><td>Label</td><td>"Example" — bold, 13px, Deep Navy. Sits on the same line as the pill tag.</td></tr>
+                <tr><td>Pill</td><td>Optional. Audience lens or context pill immediately after the label. Separated by a thin divider character or space.</td></tr>
+                <tr><td>Body</td><td>13.5px, standard body text. Begins on the line below the label row.</td></tr>
+              </table>
+            </div>
+            <div class="preset-spec">
+              <div class="preset-spec-label">When to use</div>
+              <p style="font-size:13.5px;line-height:1.65;">Inside Show/Hide sections, after SIFT breakdowns, or anywhere a concrete real-world example illustrates the concept. The pill tags the audience context. No border radius keeps it visually subordinate to the surrounding content — it reads as supporting detail, not a featured callout.</p>
+            </div>
+          </div>
+          <div class="prod-note-block">
+            <div class="pn-label">Prod note</div>
+            Callout Style (Example; warm gray background)<br>
+            Label: Example &nbsp;[Student]<br>
+            Body: [example text]<br><br>
+            <span class="pn-comment">// Pill tag follows label inline — same line, no line break</span><br>
+            <span class="pn-comment">// Use existing Highlight Box prod note; pill tag is added inline after label text</span><br><br>
+            <span class="pn-comment">// Color options: warm gray (default / neutral), coral, sky, green, amber</span>
+          </div>
+          <div class="demo-wrap" style="margin-bottom:0;">
+            <div class="demo-label">Live mockup — color variants at 660px</div>
+            <div class="platform-frame">
+              <div style="display:flex;flex-direction:column;gap:10px;">
+
+                <!-- Gray — default -->
+                <div class="cc-example" style="border-left-color:var(--slate);background:var(--warm-gray);">
+                  <div class="cc-example-header">
+                    <span class="cc-example-label">Example</span>
+                    <span class="pill pill-student">Student</span>
+                    <span style="color:var(--rule);font-size:12px;">|</span>
+                  </div>
+                  <div class="cc-example-body">A student who frequently uses AI for research keeps a bookmark folder with three databases and their institution's library catalog. When AI generates a citation, they check the folder first. It takes 30 seconds.</div>
+                </div>
+
+                <!-- Coral -->
+                <div class="cc-example" style="border-left-color:var(--coral);background:var(--coral-lt);">
+                  <div class="cc-example-header">
+                    <span class="cc-example-label">Example</span>
+                    <span class="pill pill-everyday">Everyday Life</span>
+                    <span style="color:var(--rule);font-size:12px;">|</span>
+                  </div>
+                  <div class="cc-example-body">A patron is about to share an AI-generated post about a local health advisory. They pause, check the county health department's website, and find the advisory doesn't exist.</div>
+                </div>
+
+                <!-- Green -->
+                <div class="cc-example" style="border-left-color:var(--green);background:var(--green-lt);">
+                  <div class="cc-example-header">
+                    <span class="cc-example-label">Example</span>
+                    <span class="pill pill-jobseeker">Job Seeker</span>
+                    <span style="color:var(--rule);font-size:12px;">|</span>
+                  </div>
+                  <div class="cc-example-body">A job seeker asks AI about their rights during salary negotiation. The AI gives plausible-sounding guidance that doesn't account for state law differences. Checking the Department of Labor's official site takes five minutes.</div>
+                </div>
+
+                <!-- No pill -->
+                <div class="cc-example" style="border-left-color:var(--slate);background:var(--warm-gray);">
+                  <div class="cc-example-header">
+                    <span class="cc-example-label">Example</span>
+                    <span style="color:var(--rule);font-size:12px;">|</span>
+                  </div>
+                  <div class="cc-example-body">No pill — when audience context is already established by surrounding content, the pill can be omitted. Label and divider only.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Part 3</span>
+      <div class="ch-bar"><div class="ch-title">Quick Reference — Author Cheat Sheet</div></div>
+    </div>
+
+    <table class="spec-table">
+      <tr>
+        <th>Preset name</th>
+        <th>Color</th>
+        <th>Border</th>
+        <th>Icon</th>
+        <th>When to use</th>
+        <th>Prod note</th>
+      </tr>
+      <tr>
+        <td><strong>Make It Real</strong></td>
+        <td>Butter/Amber</td>
+        <td>Glowing border</td>
+        <td>None</td>
+        <td>End-of-section activity prompt</td>
+        <td><code>Content Card (Make It Real)</code></td>
+      </tr>
+      <tr>
+        <td><strong>Real Talk</strong></td>
+        <td>Coral</td>
+        <td>Left only</td>
+        <td>None</td>
+        <td>Honest implication, 3–6 lines</td>
+        <td><code>Content Card (Real Talk)</code></td>
+      </tr>
+      <tr>
+        <td><strong>What's Next</strong></td>
+        <td>Sky + Navy border</td>
+        <td>Left only</td>
+        <td>None</td>
+        <td>Summary page lesson bridge</td>
+        <td><code>Content Card (What's Next)</code></td>
+      </tr>
+      <tr>
+        <td><strong>The Big Idea</strong></td>
+        <td>Blue-gray (neutral)</td>
+        <td>Full, soft</td>
+        <td>None</td>
+        <td>Central concept or key insight — calm, no urgency</td>
+        <td><code>Content Card (The Big Idea)</code></td>
+      </tr>
+      <tr>
+        <td><strong>Strong / Weak · Do / Don't</strong></td>
+        <td>Green (positive) + Coral (negative)</td>
+        <td>Label bar + content border</td>
+        <td>✓ / △ in label</td>
+        <td>Paired comparison — stacked or 2-col</td>
+        <td><code>Comparison (Weak / Strong; stacked)</code> or <code>Comparison (Do / Don't; 2-col)</code></td>
+      </tr>
+      <tr>
+        <td><strong>Content Card (Top Border)</strong></td>
+        <td>Any color</td>
+        <td>Top only</td>
+        <td>None</td>
+        <td>Scenario cards, content sections with optional pill tag</td>
+        <td><code>Content Card (topBorder; [color])</code></td>
+      </tr>
+      <tr>
+        <td><strong>Pill Tag</strong></td>
+        <td>9 variants</td>
+        <td>—</td>
+        <td>—</td>
+        <td>Audience lens or context label — in card header band or inline</td>
+        <td><code>Pill: [Student / Job Seeker / Everyday Life / color + label]</code></td>
+      </tr>
+      <tr>
+        <td><strong>Example Callout</strong></td>
+        <td>Any (default: Warm Gray)</td>
+        <td>Left border only, no radius</td>
+        <td>None</td>
+        <td>Concrete real-world example with optional audience lens pill</td>
+        <td><code>Callout Style (Example; warm gray background)</code> + <code>Pill: [lens]</code> inline</td>
+      </tr>
+    </table>
+
+    <div class="callout c-sky" style="margin-top:20px;">
+      <div class="callout-label">Custom combinations</div>
+      If none of the presets fit, use the full notation: <code>Content Card ([color]; [border]; [icon])</code> with <code>Title:</code> and <code>Body:</code> on the following lines. All color, border, and icon options from Part 1 are available for custom combinations.
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
