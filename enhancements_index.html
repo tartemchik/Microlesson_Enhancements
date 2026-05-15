@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Literacy Platform Enhancements · Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral:     #F76C6C;
+  --coral-lt:  #FEF0F0;
+  --navy:      #374785;
+  --deep-navy: #24305E;
+  --sky:       #A8D0E6;
+  --sky-lt:    #EDF6FB;
+  --slate:     #6B7FA3;
+  --rule:      #D1D8E8;
+  --warm-gray: #F5F5F5;
+  --green:     #2A9D8F;
+  --green-lt:  #EAF7F5;
+  --amber:     #B5952E;
+  --amber-lt:  #FEF9EE;
+  --purple:    #7B5EA7;
+  --purple-lt: #EDE8F5;
+  --white:     #ffffff;
+  --font-head: 'Merriweather', Georgia, serif;
+  --font-body: 'Open Sans', -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  background: #ECEEF4;
+  color: var(--deep-navy);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+.shell { max-width: 860px; margin: 0 auto; padding: 0 28px 100px; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--deep-navy);
+  border-radius: 12px;
+  padding: 48px 52px;
+  margin: 32px 0 44px;
+  position: relative; overflow: hidden;
+}
+.cover::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:260px; height:260px; border-radius:50%;
+  background:rgba(168,208,230,.07);
+}
+.cover::after {
+  content:''; position:absolute; bottom:-40px; left:60px;
+  width:180px; height:180px; border-radius:50%;
+  background:rgba(247,108,108,.05);
+}
+.cover-eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--sky); margin-bottom:12px;
+}
+.cover-title {
+  font-family:var(--font-head); font-size:26px; font-weight:700;
+  color:var(--white); line-height:1.25; margin-bottom:8px;
+}
+.cover-sub { font-size:14px; color:rgba(255,255,255,.55); margin-bottom:28px; }
+.cover-meta {
+  display:flex; gap:10px; flex-wrap:wrap;
+  padding-top:24px; border-top:1px solid rgba(255,255,255,.1);
+}
+.meta-item { font-size:12px; color:rgba(255,255,255,.45); display:flex; align-items:center; gap:6px; }
+.meta-item strong { color:rgba(255,255,255,.75); }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate);
+  margin-bottom:14px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+
+/* ── CALLOUT ── */
+.callout {
+  padding:14px 18px; border-radius:0 8px 8px 0;
+  border-left:4px solid; margin-bottom:28px;
+  font-size:13.5px; line-height:1.65;
+}
+.c-sky { background:var(--sky-lt); border-color:var(--sky); }
+.callout-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); margin-bottom:4px; }
+
+/* ── ENHANCEMENT CARDS ── */
+.enhancements { display:flex; flex-direction:column; gap:12px; margin-bottom:40px; }
+
+.enh-card {
+  background:var(--white);
+  border:1.5px solid var(--rule);
+  border-radius:12px;
+  overflow:hidden;
+  transition:box-shadow .2s, border-color .2s;
+  text-decoration:none;
+  display:block;
+  color:inherit;
+}
+.enh-card.has-doc:hover {
+  border-color:var(--coral);
+  box-shadow:0 3px 16px rgba(247,108,108,.12);
+}
+.enh-card.pending { opacity:.8; }
+
+.enh-card-inner { display:flex; align-items:stretch; }
+
+/* Number badge */
+.enh-num {
+  width:64px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-head); font-size:22px; font-weight:700;
+  color:var(--white);
+}
+.enh-card:nth-child(1) .enh-num { background:var(--coral); }
+.enh-card:nth-child(2) .enh-num { background:var(--purple); }
+.enh-card:nth-child(3) .enh-num { background:var(--navy); }
+.enh-card:nth-child(4) .enh-num { background:#2E6DA4; }
+.enh-card:nth-child(5) .enh-num { background:var(--green); }
+.enh-card:nth-child(6) .enh-num { background:var(--amber); }
+.enh-card:nth-child(7) .enh-num { background:var(--slate); }
+
+/* Main content */
+.enh-content {
+  flex:1; padding:16px 20px;
+  display:flex; flex-direction:column; gap:4px;
+}
+.enh-title {
+  font-family:var(--font-head); font-size:15px; font-weight:700;
+  color:var(--deep-navy); line-height:1.3;
+}
+.enh-subtitle {
+  font-size:13px; color:var(--slate); line-height:1.5;
+}
+.enh-meta {
+  display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;
+}
+.tag {
+  font-size:10px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; padding:2px 9px; border-radius:10px;
+}
+.tag-high   { background:var(--coral-lt);  color:var(--coral);  border:1px solid var(--coral); }
+.tag-med    { background:var(--amber-lt);  color:var(--amber);  border:1px solid var(--amber); }
+.tag-doc    { background:var(--green-lt);  color:var(--green);  border:1px solid var(--green); }
+.tag-pending{ background:var(--warm-gray); color:var(--slate);  border:1px solid var(--rule);  }
+.tag-p1     { background:var(--coral-lt);  color:var(--coral); }
+.tag-p2     { background:var(--purple-lt); color:var(--purple); }
+
+/* Right arrow / status */
+.enh-action {
+  width:52px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; color:var(--rule);
+  transition:color .2s;
+}
+.enh-card.has-doc:hover .enh-action { color:var(--coral); }
+.enh-card.pending .enh-action { font-size:13px; color:var(--slate); writing-mode:initial; }
+
+/* ── PRIORITY LEGEND ── */
+.legend {
+  background:var(--white); border:1.5px solid var(--rule);
+  border-radius:10px; padding:16px 20px; margin-bottom:32px;
+  display:flex; gap:20px; flex-wrap:wrap; align-items:center;
+}
+.legend-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); }
+.legend-items { display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ── PROGRESS BAR ── */
+.progress-section { margin-bottom:32px; }
+.progress-header {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:8px;
+}
+.progress-label { font-size:13px; font-weight:600; color:var(--deep-navy); }
+.progress-count { font-size:12px; color:var(--slate); }
+.progress-track {
+  height:8px; background:var(--rule); border-radius:4px; overflow:hidden;
+}
+.progress-fill {
+  height:100%; border-radius:4px;
+  background:linear-gradient(90deg, var(--coral) 0%, var(--purple) 100%);
+  transition:width .4s ease;
+}
+
+/* ── FOOTER ── */
+.doc-footer {
+  padding-top:24px; border-top:1px solid var(--rule);
+  font-size:12px; color:var(--slate);
+  display:flex; justify-content:space-between; align-items:center;
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-eyebrow">LearningExpress · AI Literacy Initiative · FY2027</div>
+    <div class="cover-title">Platform Enhancements<br>Requirements Index</div>
+    <div class="cover-sub">Prioritized list of platform capabilities needed to deliver the full AI literacy microlesson design intent · Modules 2–4</div>
+    <div class="cover-meta">
+      <div class="meta-item"><strong>7</strong> enhancements total</div>
+      <div class="meta-item"><strong>2</strong> with full requirements docs</div>
+      <div class="meta-item"><strong>5</strong> requirements pending</div>
+      <div class="meta-item"><strong>May 2026</strong></div>
+    </div>
+  </div>
+
+  <!-- CONTEXT CALLOUT -->
+  <div class="callout c-sky">
+    <div class="callout-label">About this list</div>
+    These enhancements were identified during the development of ML 2.6 (Your Verification Toolkit) and represent platform capability gaps that constrain instructional design across all AI literacy microlessons. They are listed in priority order — highest instructional impact and broadest recurrence across modules first. Each item links to its full requirements document where available.
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label">Requirements documentation progress</span>
+      <span class="progress-count">2 of 7 complete</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:28.5%;"></div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-label">Priority</span>
+    <div class="legend-items">
+      <span class="tag tag-high">High</span>
+      <span class="tag tag-med">Medium</span>
+    </div>
+    <span class="legend-label" style="margin-left:12px;">Status</span>
+    <div class="legend-items">
+      <span class="tag tag-doc">Doc ready</span>
+      <span class="tag tag-pending">Pending</span>
+    </div>
+    <span class="legend-label" style="margin-left:12px;">Phase</span>
+    <div class="legend-items">
+      <span class="tag tag-p1">Phase 1 MVP</span>
+      <span class="tag tag-p2">Phase 2</span>
+    </div>
+  </div>
+
+  <!-- SECTION: HIGH PRIORITY -->
+  <div class="section-label">High Priority</div>
+  <div class="enhancements">
+
+    <!-- E1 -->
+    <a class="enh-card has-doc" href="E1_Tabbed_Switcher_Requirements.html">
+      <div class="enh-card-inner">
+        <div class="enh-num">E1</div>
+        <div class="enh-content">
+          <div class="enh-title">Tabbed Scenario Switcher</div>
+          <div class="enh-subtitle">Audience-lens navigation for the layered example pattern. Three side-by-side tabs (Student · Job Seeker · Everyday Life) that switch content panels in place — recurs across every microlesson in Modules 2–4.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-doc">Doc ready</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">→</div>
+      </div>
+    </a>
+
+    <!-- E2 -->
+    <a class="enh-card has-doc" href="E2_Self_Assessment_Requirements.html">
+      <div class="enh-card-inner">
+        <div class="enh-num">E2</div>
+        <div class="enh-content">
+          <div class="enh-title">Self-Assessment Question Type</div>
+          <div class="enh-subtitle">A non-graded question type where all answers are valid and each choice triggers unique, personalized feedback. No score, no right/wrong indicator. Essential for reflection moments in professional skills and AI literacy content.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-doc">Doc ready</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">→</div>
+      </div>
+    </a>
+
+    <!-- E3 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E3</div>
+        <div class="enh-content">
+          <div class="enh-title">Questions Inside Show/Hide Sections</div>
+          <div class="enh-subtitle">Scenario-linked embedded assessment — knowledge check questions placed inside expandable sections, directly connected to the stimulus content the learner just read. Currently questions must be decoupled from their scenarios, weakening instructional connection.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+    <!-- E4 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E4</div>
+        <div class="enh-content">
+          <div class="enh-title">Progressive Question Unlock</div>
+          <div class="enh-subtitle">Sequential step-by-step interactivity — questions unlock one at a time as the learner answers each preceding question. Enforces the SIFT method as a sequential process rather than a checklist. Answering (correctly or not) unlocks the next step.</div>
+          <div class="enh-meta">
+            <span class="tag tag-high">High priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p1">Phase 1 MVP</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION: MEDIUM PRIORITY -->
+  <div class="section-label">Medium Priority</div>
+  <div class="enhancements">
+
+    <!-- E5 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E5</div>
+        <div class="enh-content">
+          <div class="enh-title">Scenario-Linked Question Sets</div>
+          <div class="enh-subtitle">Conditional questions based on which scenario the learner opened. When a learner engages with the Job Seeker scenario, they see job-seeker-specific questions — not generic questions written to work regardless of context. Requires E1 and E3 as prerequisites.</div>
+          <div class="enh-meta">
+            <span class="tag tag-med">Medium priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p2">Phase 2</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+    <!-- E6 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E6</div>
+        <div class="enh-content">
+          <div class="enh-title">Completion State / Content Reveal</div>
+          <div class="enh-subtitle">Post-practice synthesis triggered by question completion — a verdict card, summary, or Real Talk callout that appears after the learner has answered all questions on a page. Currently all post-practice content must be always-visible, reducing its impact.</div>
+          <div class="enh-meta">
+            <span class="tag tag-med">Medium priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p2">Phase 2</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+    <!-- E7 -->
+    <div class="enh-card pending">
+      <div class="enh-card-inner">
+        <div class="enh-num">E7</div>
+        <div class="enh-content">
+          <div class="enh-title">Hotspot on Formatted Text</div>
+          <div class="enh-subtitle">Clickable claims directly within AI output cards — learners click on specific flagged statistics, named organizations, or attributed quotes to see SIFT verification prompts. Currently hotspot questions require a static image base; styled HTML text cannot be used as a hotspot target without export to image.</div>
+          <div class="enh-meta">
+            <span class="tag tag-med">Medium priority</span>
+            <span class="tag tag-pending">Pending</span>
+            <span class="tag tag-p2">Phase 2</span>
+          </div>
+        </div>
+        <div class="enh-action">—</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>LearningExpress · AI Literacy Initiative · Platform Enhancements</span>
+    <span>May 2026 · 7 items · 2 docs complete</span>
+  </div>
+
+</div>
+</body>
+</html>
