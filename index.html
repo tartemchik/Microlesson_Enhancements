@@ -158,47 +158,61 @@ body { font-family: var(--font-body); background: #ECEEF4; color: var(--deep-nav
 .sh-body { padding:14px 16px; border-top:1px solid var(--rule); font-size:13px; line-height:1.6; display:none; }
 .sh-item.open .sh-body { display:block; }
 
-/* ── OPTION C: BUTTON-REVEAL ── */
-.btn-reveal-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px; }
+/* ── OPTION C: BUTTON-REVEAL (platform-matched style) ── */
+:root { --lavender: #E8E0F5; --lavender-border: #C4AEED; --lavender-dark: #7B5EA7; }
+.btn-reveal-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:0; }
 .reveal-btn {
-  padding:18px 14px; border-radius:10px; border:1.5px solid var(--rule);
-  background:#fff; cursor:pointer; text-align:center; transition:all .2s;
-  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:14px 12px; border-radius:10px;
+  border:1.5px dashed var(--lavender-border);
+  background: var(--lavender);
+  cursor:pointer; text-align:left; transition:all .18s;
+  display:flex; align-items:center; gap:10px;
 }
-.reveal-btn:hover:not(.active) { border-color:var(--sky); background:var(--sky-lt); }
-.reveal-btn.active { border-color:var(--coral); background:var(--coral-lt); box-shadow:0 2px 10px rgba(247,108,108,.15); }
-.reveal-btn .rb-icon { font-size:26px; }
-.reveal-btn .rb-name { font-weight:700; font-size:13.5px; color:var(--deep-navy); }
-.reveal-btn .rb-desc { font-size:11px; color:var(--slate); line-height:1.4; }
-.reveal-btn.active .rb-name { color:var(--coral); }
-.reveal-btn .rb-arrow { font-size:14px; color:var(--rule); margin-top:2px; transition:color .2s; }
-.reveal-btn.active .rb-arrow { color:var(--coral); }
-.reveal-panel { display:none; border:1.5px solid var(--coral); border-radius:0 0 8px 8px;
-  border-top:none; animation:panelIn .2s ease-out; }
+.reveal-btn:hover:not(.active) { border-style:solid; border-color:var(--lavender-dark); }
+.reveal-btn.active {
+  border-style:solid; border-color:var(--lavender-dark);
+  background: #DDD4F0;
+  box-shadow: 0 1px 6px rgba(123,94,167,.18);
+}
+.rb-toggle {
+  width:22px; height:22px; border-radius:50%;
+  border:2px solid var(--lavender-dark);
+  background:#fff; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; font-weight:300; color:var(--lavender-dark);
+  transition:transform .18s;
+  line-height:1;
+}
+.reveal-btn.active .rb-toggle { transform:rotate(45deg); }
+.rb-text { flex:1; }
+.rb-name { font-weight:700; font-size:13px; color:#3D2B6B; line-height:1.3; }
+.rb-desc { font-size:11px; color:#7B5EA7; margin-top:2px; line-height:1.35; }
+.reveal-panel {
+  display:none;
+  margin-top:8px;
+  border-radius:10px;
+  border:1.5px solid var(--lavender-dark);
+  background:#fff;
+  animation:panelIn .18s ease-out;
+  overflow:hidden;
+}
 .reveal-panel.show { display:block; }
 @keyframes panelIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
-.reveal-panel-tab { background:var(--coral); padding:7px 16px; display:flex; align-items:center; gap:8px;
-  border-radius:0; }
-.rpt-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; }
-.rpt-icon { font-size:14px; }
-.reveal-panel-body { padding:14px 16px; background:#fff; border-radius:0 0 6px 6px; }
-
-/* ── OPTION D: LANDING PAGE ── */
-.landing-buttons { display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
-.landing-btn { flex:1; min-width:160px; padding:16px 14px; border-radius:10px; border:1.5px solid var(--rule); background:#fff; cursor:pointer; text-align:center; transition:all .15s; }
-.landing-btn:hover { border-color:var(--coral); }
-.landing-btn.selected { border-color:var(--coral); background:var(--coral-lt); }
-.lb-icon { font-size:24px; margin-bottom:6px; }
-.lb-name { font-weight:700; font-size:13.5px; color:var(--deep-navy); }
-.lb-desc { font-size:12px; color:var(--slate); margin-top:3px; }
-.landing-content { display:none; background:var(--sky-lt); border:1.5px solid var(--sky); border-radius:8px; padding:14px 16px; font-size:13px; line-height:1.6; }
-.landing-content.show { display:block; }
+.reveal-panel-header {
+  background: var(--lavender);
+  padding:8px 16px;
+  display:flex; align-items:center; gap:8px;
+  border-bottom:1px solid var(--lavender-border);
+}
+.rph-label { font-size:12px; font-weight:700; color:#3D2B6B; }
+.reveal-panel-body { padding:14px 16px; font-size:13px; line-height:1.65; color:var(--deep-navy); }
 
 /* ── OPTION E: TRUE TABS ── */
-.tab-row { display:flex; border-bottom:2px solid var(--rule); margin-bottom:16px; }
-.tab-btn { padding:10px 18px; font-size:13px; font-weight:600; color:var(--slate); background:transparent; border:none; border-bottom:3px solid transparent; margin-bottom:-2px; cursor:pointer; display:flex; align-items:center; gap:6px; transition:color .15s, border-color .15s; }
-.tab-btn:hover:not(.active) { color:var(--navy); }
-.tab-btn.active { color:var(--coral); border-bottom-color:var(--coral); font-weight:700; }
+.tab-row { display:flex; border-bottom:2px solid var(--rule); margin-bottom:0; }
+.tab-btn { padding:10px 18px; font-size:13px; font-weight:600; color:var(--slate); background:transparent; border:none; border-bottom:3px solid transparent; margin-bottom:-2px; cursor:pointer; display:flex; align-items:center; gap:7px; transition:color .15s, border-color .15s; }
+.tab-btn svg { stroke:currentColor; }
+.tab-btn:hover:not(.active) { color:var(--deep-navy); }
+.tab-btn.active { color:var(--deep-navy); border-bottom-color:#444; font-weight:700; }
 .tab-panel { display:none; }
 .tab-panel.active { display:block; }
 
@@ -312,13 +326,7 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
         <td>High — true audience choice signal, content reveals below selection</td>
         <td><span class="badge b-rec">Recommended near-term</span></td>
       </tr>
-      <tr>
-        <td><strong>D</strong></td>
-        <td>Audience selection landing page</td>
-        <td><span class="badge b-med">Medium</span></td>
-        <td>Medium — requires session state, structural change</td>
-        <td>Not recommended</td>
-      </tr>
+
       <tr>
         <td><strong>E</strong></td>
         <td>True tab component (new)</td>
@@ -428,30 +436,24 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
               <p style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;">Choose your scenario</p>
               <div class="sh-stack">
                 <div class="sh-item open">
-                  <div class="sh-trigger">
-                    <div class="sh-icon">🎓</div>
-                    <div style="flex:1"><div class="sh-name">AI research summary — for a school paper</div><div style="font-size:12px;color:var(--slate);font-style:italic;">An AI summarized research data. Would you cite it?</div></div>
-                    <div class="sh-toggle">+</div>
+                  <div class="sh-trigger" style="background:var(--lavender);">
+                    <div class="sh-icon" style="border-color:var(--lavender-dark);color:var(--lavender-dark);">−</div>
+                    <div style="flex:1"><div class="sh-name" style="color:#3D2B6B;">AI research summary — for a school paper</div><div style="font-size:12px;color:#7B5EA7;font-style:italic;">An AI summarized research data. Would you cite it?</div></div>
                   </div>
-                  <div class="sh-body">
-                    <div class="ai-card">
-                      <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">Research summary</span></div>
-                      <div class="ai-body">According to a <span class="ai-flag">2022 UN report</span>, yields are projected to decline <span class="ai-flag">up to 25% by 2050</span>…</div>
-                    </div>
+                  <div class="sh-body" style="border-top:1px solid var(--lavender-border);">
+                    <p style="font-size:13px;color:var(--deep-navy);line-height:1.65;">An AI research summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics are accurate.</p>
                   </div>
                 </div>
-                <div class="sh-item">
-                  <div class="sh-trigger">
-                    <div class="sh-icon">💼</div>
-                    <div style="flex:1"><div class="sh-name">AI company overview — before a job interview</div><div style="font-size:12px;color:var(--slate);font-style:italic;">An AI generated a company profile. Is it safe to use?</div></div>
-                    <div class="sh-toggle">+</div>
+                <div class="sh-item" style="border-color:var(--lavender-border);">
+                  <div class="sh-trigger" style="background:var(--lavender);">
+                    <div class="sh-icon" style="border-color:var(--lavender-dark);color:var(--lavender-dark);">+</div>
+                    <div style="flex:1"><div class="sh-name" style="color:#3D2B6B;">AI company overview — before a job interview</div><div style="font-size:12px;color:#7B5EA7;font-style:italic;">An AI generated a company profile. Is it safe to use?</div></div>
                   </div>
                 </div>
-                <div class="sh-item">
-                  <div class="sh-trigger">
-                    <div class="sh-icon">🏠</div>
-                    <div style="flex:1"><div class="sh-name">Health claim shared in a family group chat</div><div style="font-size:12px;color:var(--slate);font-style:italic;">A family member got this from an AI chatbot. SIFT it.</div></div>
-                    <div class="sh-toggle">+</div>
+                <div class="sh-item" style="border-color:var(--lavender-border);">
+                  <div class="sh-trigger" style="background:var(--lavender);">
+                    <div class="sh-icon" style="border-color:var(--lavender-dark);color:var(--lavender-dark);">+</div>
+                    <div style="flex:1"><div class="sh-name" style="color:#3D2B6B;">Health claim shared in a family group chat</div><div style="font-size:12px;color:#7B5EA7;font-style:italic;">A family member got this from an AI chatbot. SIFT it.</div></div>
                   </div>
                 </div>
               </div>
@@ -501,122 +503,50 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
               <p style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;">Choose your scenario</p>
               <div class="btn-reveal-row">
                 <div class="reveal-btn" id="rb-s" onclick="selectReveal('s')">
-                  <div class="rb-icon">🎓</div>
-                  <div class="rb-name">Student</div>
-                  <div class="rb-desc">School papers, research, academic work</div>
-                  <div class="rb-arrow">▼</div>
+                  <div class="rb-toggle">+</div>
+                  <div class="rb-text">
+                    <div class="rb-name">Student</div>
+                    <div class="rb-desc">School papers, research, academic work</div>
+                  </div>
                 </div>
                 <div class="reveal-btn" id="rb-j" onclick="selectReveal('j')">
-                  <div class="rb-icon">💼</div>
-                  <div class="rb-name">Job Seeker</div>
-                  <div class="rb-desc">Interviews, company research, professional contexts</div>
-                  <div class="rb-arrow">▼</div>
+                  <div class="rb-toggle">+</div>
+                  <div class="rb-text">
+                    <div class="rb-name">Job Seeker</div>
+                    <div class="rb-desc">Interviews, company research, professional contexts</div>
+                  </div>
                 </div>
                 <div class="reveal-btn" id="rb-e" onclick="selectReveal('e')">
-                  <div class="rb-icon">🏠</div>
-                  <div class="rb-name">Everyday Life</div>
-                  <div class="rb-desc">Health info, news, family, community</div>
-                  <div class="rb-arrow">▼</div>
+                  <div class="rb-toggle">+</div>
+                  <div class="rb-text">
+                    <div class="rb-name">Everyday Life</div>
+                    <div class="rb-desc">Health info, news, family, community</div>
+                  </div>
                 </div>
               </div>
 
               <div class="reveal-panel" id="rp-s">
-                <div class="reveal-panel-tab"><span class="rpt-icon">🎓</span><span class="rpt-label">Student scenario</span></div>
+                <div class="reveal-panel-header"><span class="rph-label">Student scenario</span></div>
                 <div class="reveal-panel-body">
-                  <div class="ai-card">
-                    <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">Research summary — climate and food security</span></div>
-                    <div class="ai-body">According to a <span class="ai-flag">2022 UN report</span>, crop yields are projected to decline by <span class="ai-flag">up to 25% by 2050</span>. Scientists at the <span class="ai-flag">Global Food Research Institute</span> called this "the defining food crisis of our generation."<span class="ai-src">— Generated by AI for a school research paper</span></div>
-                  </div>
+                  <p style="font-weight:600;color:#3D2B6B;margin-bottom:6px;">Student scenario</p>
+                  <p>An AI research summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics can be traced to a real document.</p>
                 </div>
               </div>
 
               <div class="reveal-panel" id="rp-j">
-                <div class="reveal-panel-tab"><span class="rpt-icon">💼</span><span class="rpt-label">Job Seeker scenario</span></div>
+                <div class="reveal-panel-header"><span class="rph-label">Job Seeker scenario</span></div>
                 <div class="reveal-panel-body">
-                  <div class="ai-card">
-                    <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">Company overview — Meridian Health Partners</span></div>
-                    <div class="ai-body">Founded in <span class="ai-flag">2004</span>, Meridian has approximately <span class="ai-flag">1,200 employees</span> and was named one of <span class="ai-flag">Modern Healthcare's Top 100 Consulting Firms</span> in 2022.<span class="ai-src">— Generated by AI before a job interview</span></div>
-                  </div>
+                  <p style="font-weight:600;color:#3D2B6B;margin-bottom:6px;">Job Seeker scenario</p>
+                  <p>An AI company overview for interview prep gives a founding year, employee count, and an award. The learner checks the company's own LinkedIn and website and finds two factual errors and an unverifiable award claim.</p>
                 </div>
               </div>
 
               <div class="reveal-panel" id="rp-e">
-                <div class="reveal-panel-tab"><span class="rpt-icon">🏠</span><span class="rpt-label">Everyday Life scenario</span></div>
+                <div class="reveal-panel-header"><span class="rph-label">Everyday Life scenario</span></div>
                 <div class="reveal-panel-body">
-                  <div class="ai-card">
-                    <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">Health claim — shared in family chat</span></div>
-                    <div class="ai-body">The <span class="ai-flag">Mayo Clinic</span> recommends <span class="ai-flag">1,000–2,000 mg of vitamin C daily</span> as a first-line cold remedy. The <span class="ai-flag">Journal of Nutritional Medicine</span> found it effective in <span class="ai-flag">87% of patients</span>.<span class="ai-src">— Shared by a family member who "asked an AI"</span></div>
-                  </div>
+                  <p style="font-weight:600;color:#3D2B6B;margin-bottom:6px;">Everyday Life scenario</p>
+                  <p>A health claim shared in a family chat attributes a specific dosage recommendation to the Mayo Clinic. The learner checks MayoClinic.org directly and finds the attribution is fabricated.</p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OPTION D -->
-      <div class="alt-card">
-        <div class="alt-card-header">
-          <div class="alt-label">D</div>
-          <div class="alt-header-text">
-            <div class="alt-name">Audience Selection Landing Page</div>
-            <div class="alt-tagline">Learner selects their context on a dedicated intro page; selection influences content display on the following page</div>
-          </div>
-          <div class="alt-badges">
-            <span class="badge b-med">Medium dev cost</span>
-          </div>
-        </div>
-        <div class="alt-body">
-          <div class="alt-rationale"><strong>How it works:</strong> Before the scenario page, a dedicated page presents three labeled buttons. The learner selects their context. A session variable stores the selection and either pre-expands or highlights the relevant Show/Hide section on the next page. The selection moment is intentional and explicit — the design communicates "this content is for you" rather than leaving discovery to the learner. <strong>However:</strong> this approach requires session state storage and conditional display logic, which may be more complex than tabs depending on platform architecture.</div>
-          <div class="pros-cons">
-            <div class="pro-box">
-              <div class="pc-label">Works for</div>
-              <ul class="pc-list">
-                <li>Strongest "this is yours" moment — explicit choice upfront</li>
-                <li>Could scale to personalize content across multiple pages</li>
-                <li>Selection UI is highly flexible and branded</li>
-              </ul>
-            </div>
-            <div class="con-box">
-              <div class="pc-label">Drawbacks</div>
-              <ul class="pc-list">
-                <li>Adds a page to every lesson that uses layered examples</li>
-                <li>Requires session state — potentially more dev work than tabs</li>
-                <li>Learner can't change their mind without going back</li>
-                <li>Overkill for a single practice page; better suited to full personalization feature</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mockup-wrap">
-            <div class="mockup-label">Mockup — Option D at 660px (interactive)</div>
-            <div class="platform-frame">
-              <p style="font-family:var(--font-head);font-size:16px;font-weight:700;margin-bottom:4px;">Which of these sounds most like you?</p>
-              <p style="font-size:13px;color:var(--slate);margin-bottom:14px;font-style:italic;">Choose one — the scenarios and examples will be tailored to your context.</p>
-              <div class="landing-buttons">
-                <div class="landing-btn" id="lb-s" onclick="selectLanding('s')">
-                  <div class="lb-icon">🎓</div>
-                  <div class="lb-name">Student</div>
-                  <div class="lb-desc">School papers, research, academic work</div>
-                </div>
-                <div class="landing-btn" id="lb-j" onclick="selectLanding('j')">
-                  <div class="lb-icon">💼</div>
-                  <div class="lb-name">Job Seeker</div>
-                  <div class="lb-desc">Job searching, interviews, professional contexts</div>
-                </div>
-                <div class="landing-btn" id="lb-e" onclick="selectLanding('e')">
-                  <div class="lb-icon">🏠</div>
-                  <div class="lb-name">Everyday Life</div>
-                  <div class="lb-desc">Health info, news, family, community</div>
-                </div>
-              </div>
-              <div class="landing-content" id="lc-s">
-                <strong>You selected: Student.</strong> On the next page, the student scenario will be highlighted — but you can open any scenario you want.
-              </div>
-              <div class="landing-content" id="lc-j">
-                <strong>You selected: Job Seeker.</strong> On the next page, the job seeker scenario will be highlighted — but you can open any scenario you want.
-              </div>
-              <div class="landing-content" id="lc-e">
-                <strong>You selected: Everyday Life.</strong> On the next page, the everyday life scenario will be highlighted — but you can open any scenario you want.
               </div>
             </div>
           </div>
@@ -662,27 +592,30 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
             <div class="mockup-label">Mockup — Option E at 660px (interactive — click the tabs)</div>
             <div class="platform-frame">
               <div class="tab-row">
-                <button class="tab-btn active" onclick="switchTab(this,'tp-s')">🎓 Student</button>
-                <button class="tab-btn" onclick="switchTab(this,'tp-j')">💼 Job Seeker</button>
-                <button class="tab-btn" onclick="switchTab(this,'tp-e')">🏠 Everyday Life</button>
+                <button class="tab-btn active" onclick="switchTab(this,'tp-s')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  Student
+                </button>
+                <button class="tab-btn" onclick="switchTab(this,'tp-j')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                  Job Seeker
+                </button>
+                <button class="tab-btn" onclick="switchTab(this,'tp-e')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  Everyday Life
+                </button>
               </div>
-              <div class="tab-panel active" id="tp-s">
-                <div class="ai-card">
-                  <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">AI research summary — climate and food security</span></div>
-                  <div class="ai-body">According to a <span class="ai-flag">2022 UN report</span>, crop yields are projected to decline by <span class="ai-flag">up to 25% by 2050</span>. Scientists at the <span class="ai-flag">Global Food Research Institute</span> called this "the defining food crisis of our generation."<span class="ai-src">— Generated by AI for a school research paper</span></div>
-                </div>
+              <div class="tab-panel active" id="tp-s" style="padding:16px 4px 4px;">
+                <p style="font-size:13.5px;line-height:1.65;color:#374785;font-weight:600;margin-bottom:6px;">Student scenario</p>
+                <p style="font-size:13px;line-height:1.65;color:#444;">An AI research summary for a school paper cites a specific UN report and names a research institute. The learner applies SIFT to verify whether the source exists and whether the statistics can be traced to a real document.</p>
               </div>
-              <div class="tab-panel" id="tp-j">
-                <div class="ai-card">
-                  <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">Company overview — Meridian Health Partners</span></div>
-                  <div class="ai-body">Founded in <span class="ai-flag">2004</span>, Meridian has approximately <span class="ai-flag">1,200 employees</span> and was named one of <span class="ai-flag">Modern Healthcare's Top 100 Consulting Firms</span> in 2022.<span class="ai-src">— Generated by AI before a job interview</span></div>
-                </div>
+              <div class="tab-panel" id="tp-j" style="padding:16px 4px 4px;">
+                <p style="font-size:13.5px;line-height:1.65;color:#374785;font-weight:600;margin-bottom:6px;">Job Seeker scenario</p>
+                <p style="font-size:13px;line-height:1.65;color:#444;">An AI company overview for interview prep gives a founding year, employee count, and award. The learner checks the company's own LinkedIn and website and finds two factual errors and an unverifiable award claim.</p>
               </div>
-              <div class="tab-panel" id="tp-e">
-                <div class="ai-card">
-                  <div class="ai-card-hd"><span class="ai-badge">AI Output</span><span class="ai-lbl">Health claim — shared in family chat</span></div>
-                  <div class="ai-body">The <span class="ai-flag">Mayo Clinic</span> recommends <span class="ai-flag">1,000–2,000 mg of vitamin C daily</span> as a first-line cold remedy. The <span class="ai-flag">Journal of Nutritional Medicine</span> found it effective in <span class="ai-flag">87% of patients</span>.<span class="ai-src">— Shared by a family member who "asked an AI"</span></div>
-                </div>
+              <div class="tab-panel" id="tp-e" style="padding:16px 4px 4px;">
+                <p style="font-size:13.5px;line-height:1.65;color:#374785;font-weight:600;margin-bottom:6px;">Everyday Life scenario</p>
+                <p style="font-size:13px;line-height:1.65;color:#444;">A health claim shared in a family chat attributes a specific dosage recommendation to the Mayo Clinic. The learner checks MayoClinic.org directly and finds the attribution is fabricated.</p>
               </div>
             </div>
           </div>
@@ -709,7 +642,7 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
 
     <div class="callout c-sky" style="margin-bottom:24px;">
       <div class="callout-label">Scope</div>
-      These requirements define the full Tab component for Option E. They are intended for product and engineering review and serve as the acceptance criteria for development. Option C (Carousel extension) requires a lighter-touch spec and is not covered here.
+      These requirements define the full Tab component for Option E and apply equally to the Button-Reveal Panel (Option C), which shares the same interaction logic and ARIA pattern. They are intended for product and engineering review and serve as acceptance criteria for development.
     </div>
 
     <!-- RENDERING -->
@@ -884,18 +817,6 @@ hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
       </table>
     </div>
 
-    <!-- RELATIONSHIPS -->
-    <div class="sec">
-      <div class="sec-title">Relationships to Other Enhancements</div>
-      <table class="req-table">
-        <tr><th>Enhancement</th><th>Relationship</th></tr>
-        <tr><td><strong>E2</strong> — Questions inside Show/Hide</td><td>Independent. E1 and E2 can be developed separately. Together they enable scenario-linked assessment inside tab panels.</td></tr>
-        <tr><td><strong>E3</strong> — Progressive question unlock</td><td>Independent. Sequential question sets can exist outside tab panels under current constraints.</td></tr>
-        <tr><td><strong>E4</strong> — Scenario-linked question sets</td><td>E1 + E2 are both prerequisites for the full E4 implementation. E4 requires knowing which tab is active and surfacing the corresponding question set.</td></tr>
-        <tr><td><strong>E5</strong> — Completion state / content reveal</td><td>Independent of E1. Completion reveals work at the page level, not inside panels.</td></tr>
-      </table>
-    </div>
-
   </div>
 
 </div><!-- /shell -->
@@ -909,16 +830,6 @@ function selectReveal(id) {
   });
   document.getElementById('rb-'+id).classList.add('active');
   document.getElementById('rp-'+id).classList.add('show');
-}
-
-// Landing page (Option D)
-function selectLanding(id) {
-  ['s','j','e'].forEach(k => {
-    document.getElementById('lb-'+k).classList.remove('selected');
-    document.getElementById('lc-'+k).classList.remove('show');
-  });
-  document.getElementById('lb-'+id).classList.add('selected');
-  document.getElementById('lc-'+id).classList.add('show');
 }
 
 // Tabs (Option E)
