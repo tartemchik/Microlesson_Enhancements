@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E2 — Self-Assessment Question Type · Requirements</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral:     #F76C6C;
+  --coral-lt:  #FEF0F0;
+  --navy:      #374785;
+  --deep-navy: #24305E;
+  --sky:       #A8D0E6;
+  --sky-lt:    #EDF6FB;
+  --slate:     #6B7FA3;
+  --rule:      #D1D8E8;
+  --warm-gray: #F5F5F5;
+  --green:     #2A9D8F;
+  --green-lt:  #EAF7F5;
+  --amber:     #B5952E;
+  --amber-lt:  #FEF9EE;
+  --white:     #ffffff;
+  --purple:    #7B5EA7;
+  --purple-lt: #EDE8F5;
+  --purple-mid:#C4AEED;
+  --lavender:  #E8E0F5;
+  --font-head: 'Merriweather', Georgia, serif;
+  --font-body: 'Open Sans', -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: #ECEEF4; color: var(--deep-navy); font-size: 15px; line-height: 1.65; }
+
+/* ── SHELL ── */
+.shell { max-width: 1060px; margin: 0 auto; padding: 0 32px 100px; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--deep-navy); border-radius: 12px;
+  padding: 48px 52px; margin: 32px 0 44px;
+  position: relative; overflow: hidden;
+}
+.cover::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:rgba(123,94,167,.1); }
+.cover-eyebrow { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--purple-mid); margin-bottom:12px; }
+.cover-title { font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--white); line-height:1.25; margin-bottom:8px; }
+.cover-sub { font-size:15px; color:rgba(255,255,255,.55); margin-bottom:24px; }
+.cover-tags { display:flex; gap:10px; flex-wrap:wrap; }
+.ctag { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
+.ctag-coral  { background:var(--coral); color:#fff; }
+.ctag-purple { background:rgba(123,94,167,.25); color:var(--purple-mid); border:1px solid rgba(196,174,237,.3); }
+
+/* ── CHAPTER ── */
+.chapter { margin-bottom:52px; }
+.chapter-hd { display:flex; align-items:center; gap:0; margin-bottom:28px; }
+.ch-num { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; background:var(--coral); padding:7px 16px; border-radius:4px 0 0 4px; }
+.ch-bar { flex:1; background:var(--deep-navy); padding:10px 20px; border-radius:0 6px 6px 0; }
+.ch-title { font-family:var(--font-head); font-size:17px; font-weight:700; color:#fff; }
+
+/* ── SECTION ── */
+.sec { margin-bottom:32px; }
+.sec-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--deep-navy); padding-bottom:8px; border-bottom:2px solid var(--rule); margin-bottom:14px; }
+.sec-body { font-size:14px; line-height:1.75; color:var(--deep-navy); margin-bottom:10px; }
+
+/* ── CALLOUTS ── */
+.callout { padding:14px 18px; border-radius:0 8px 8px 0; border-left:4px solid; margin-bottom:16px; font-size:13.5px; line-height:1.65; }
+.callout-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px; }
+.c-sky    { background:var(--sky-lt);    border-color:var(--sky);    }
+.c-sky    .callout-label { color:var(--navy); }
+.c-amber  { background:var(--amber-lt);  border-color:var(--amber);  }
+.c-amber  .callout-label { color:var(--amber); }
+.c-navy   { background:#EEF0FA;          border-color:var(--navy);   }
+.c-navy   .callout-label { color:var(--navy); }
+.c-purple { background:var(--purple-lt); border-color:var(--purple); }
+.c-purple .callout-label { color:var(--purple); }
+
+/* ── PHASE TAGS ── */
+.phase-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:3px 10px; border-radius:12px; margin-right:6px; }
+.p1 { background:var(--coral); color:#fff; }
+.p2 { background:var(--purple-lt); color:var(--purple); border:1px solid var(--purple-mid); }
+.p3 { background:var(--warm-gray); color:var(--slate); border:1px solid var(--rule); }
+
+/* ── MOCKUP FRAME ── */
+.demo-wrap { margin:20px 0 24px; }
+.demo-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.demo-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+.platform-frame { width:660px; background:#fff; border:1.5px solid var(--rule); border-radius:8px; padding:24px; font-family:var(--font-body); color:var(--deep-navy); font-size:14px; line-height:1.65; }
+.platform-frame-full { width:100%; background:#fff; border:1.5px solid var(--rule); border-radius:8px; padding:24px; }
+
+/* ── SELF-ASSESSMENT QUESTION COMPONENT ── */
+.sa-card { border:1.5px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:12px; }
+.sa-stem-bar {
+  background: var(--purple-lt);
+  padding:14px 18px;
+  border-bottom:1px solid var(--purple-mid);
+}
+.sa-stem-label {
+  font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--purple); margin-bottom:5px;
+  display:flex; align-items:center; gap:7px;
+}
+.sa-stem-label svg { flex-shrink:0; }
+.sa-stem-text { font-size:14px; font-weight:600; color:var(--deep-navy); line-height:1.5; }
+.sa-options { padding:14px 16px; display:flex; flex-direction:column; gap:8px; }
+.sa-option {
+  display:flex; align-items:flex-start; gap:10px;
+  padding:10px 14px; border-radius:8px;
+  border:1.5px solid var(--rule); background:#fff;
+  cursor:pointer; font-size:13.5px; line-height:1.5;
+  text-align:left; width:100%;
+  transition:border-color .15s, background .15s;
+  color:var(--deep-navy);
+}
+.sa-option:hover:not(:disabled) { border-color:var(--purple-mid); background:var(--purple-lt); }
+.sa-option.selected { border-color:var(--purple); background:var(--purple-lt); }
+.sa-option:disabled { cursor:default; }
+.sa-indicator {
+  width:20px; height:20px; border-radius:50%; border:2px solid var(--rule);
+  flex-shrink:0; margin-top:2px; display:flex; align-items:center;
+  justify-content:center; font-size:11px; transition:all .15s;
+}
+.sa-option.selected .sa-indicator { border-color:var(--purple); background:var(--purple); color:#fff; }
+
+/* Feedback panel */
+.sa-feedback-panel {
+  display:none; margin:0 16px 14px;
+  padding:13px 16px; border-radius:8px;
+  background:var(--purple-lt);
+  border-left:3px solid var(--purple);
+  font-size:13px; line-height:1.6; color:var(--deep-navy);
+  animation:feedIn .2s ease-out;
+}
+.sa-feedback-panel.show { display:block; }
+@keyframes feedIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+.sa-feedback-label {
+  font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--purple); margin-bottom:5px;
+  display:flex; align-items:center; gap:6px;
+}
+
+/* No score indicator */
+.sa-footer {
+  background:var(--warm-gray); border-top:1px solid var(--rule);
+  padding:8px 18px; font-size:11px; color:var(--slate);
+  display:flex; align-items:center; gap:6px; font-style:italic;
+}
+
+/* ── USER STORY CARDS ── */
+.story-grid { display:flex; flex-direction:column; gap:20px; }
+.story-card { background:#fff; border:1.5px solid var(--rule); border-radius:12px; overflow:hidden; }
+.story-header { display:flex; align-items:stretch; }
+.story-num { background:var(--deep-navy); padding:16px 18px; font-family:var(--font-head); font-size:18px; font-weight:700; color:#fff; display:flex; align-items:center; min-width:52px; justify-content:center; }
+.story-header-text { padding:14px 18px; flex:1; background:var(--deep-navy); }
+.story-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:#fff; margin-bottom:3px; }
+.story-statement { font-size:12px; color:rgba(255,255,255,.5); line-height:1.5; }
+.story-body { padding:20px 22px; }
+.story-section-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--purple); margin:14px 0 8px; }
+.story-section-label:first-child { margin-top:0; }
+.story-ac-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.story-ac-list li { display:flex; gap:10px; font-size:13.5px; line-height:1.55; color:var(--deep-navy); }
+.story-ac-list li::before { content:'✓'; color:var(--green); font-weight:700; font-size:12px; flex-shrink:0; margin-top:2px; }
+.story-note { background:var(--warm-gray); border-radius:6px; padding:11px 14px; font-size:13px; line-height:1.6; color:var(--slate); margin-top:12px; }
+.story-note strong { color:var(--deep-navy); }
+.story-question-list { list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:6px; }
+.story-question-list li { font-size:13px; color:var(--slate); padding-left:14px; position:relative; line-height:1.55; }
+.story-question-list li::before { content:'?'; position:absolute; left:0; color:var(--amber); font-weight:700; font-size:12px; }
+
+/* ── METRICS TABLE ── */
+.metrics-table { width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:16px; }
+.metrics-table th { background:var(--deep-navy); color:#fff; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:10px 14px; text-align:left; }
+.metrics-table td { padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.55; }
+.metrics-table tr:last-child td { border-bottom:none; }
+.metrics-table tr:nth-child(even) td { background:var(--warm-gray); }
+
+/* ── ROADMAP ── */
+.roadmap { display:flex; flex-direction:column; gap:12px; }
+.roadmap-phase { border-radius:10px; overflow:hidden; border:1.5px solid var(--rule); }
+.roadmap-phase-header { display:flex; align-items:center; gap:14px; padding:14px 18px; }
+.rp-1 .roadmap-phase-header { background:var(--coral); }
+.rp-2 .roadmap-phase-header { background:var(--purple); }
+.rp-3 .roadmap-phase-header { background:var(--slate); }
+.roadmap-phase-num { font-family:var(--font-head); font-size:20px; font-weight:700; color:#fff; }
+.roadmap-phase-title { font-size:14px; font-weight:700; color:#fff; }
+.roadmap-phase-sub { font-size:12px; color:rgba(255,255,255,.65); margin-top:2px; }
+.roadmap-phase-body { padding:16px 18px; background:#fff; display:flex; flex-direction:column; gap:8px; }
+.roadmap-item { display:flex; gap:10px; font-size:13.5px; line-height:1.55; }
+.roadmap-item::before { content:'→'; color:var(--slate); font-weight:700; flex-shrink:0; }
+
+/* ── DESIGN SPEC TABLE ── */
+.spec-table { width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:16px; }
+.spec-table th { background:var(--deep-navy); color:#fff; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:10px 14px; text-align:left; }
+.spec-table td { padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.6; }
+.spec-table tr:last-child td { border-bottom:none; }
+.spec-table tr:nth-child(even) td { background:var(--warm-gray); }
+.spec-table code { font-family:'Courier New', monospace; font-size:12px; background:#EEF0FA; padding:2px 6px; border-radius:3px; color:var(--navy); }
+
+/* ── COMPARISON (right/wrong vs self-assessment) ── */
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+.compare-card { border-radius:10px; overflow:hidden; }
+.compare-header { padding:10px 16px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+.compare-body { padding:14px 16px; font-size:13px; line-height:1.6; }
+.compare-wrong .compare-header { background:var(--coral); color:#fff; }
+.compare-wrong .compare-body { background:var(--coral-lt); border:1.5px solid var(--coral); border-top:none; border-radius:0 0 10px 10px; }
+.compare-right .compare-header { background:var(--purple); color:#fff; }
+.compare-right .compare-body { background:var(--purple-lt); border:1.5px solid var(--purple); border-top:none; border-radius:0 0 10px 10px; }
+.compare-body ul { list-style:none; display:flex; flex-direction:column; gap:6px; }
+.compare-body li { display:flex; gap:8px; }
+.compare-wrong .compare-body li::before { content:'✗'; color:var(--coral); font-weight:700; }
+.compare-right .compare-body li::before { content:'✓'; color:var(--purple); font-weight:700; }
+
+hr { border:none; border-top:1px solid var(--rule); margin:28px 0; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-eyebrow">LearningExpress · Platform Enhancements · E2</div>
+    <div class="cover-title">Self-Assessment Question Type<br>Requirements &amp; Roadmap</div>
+    <div class="cover-sub">Flexible, non-graded reflection questions with per-choice feedback · Professional skills &amp; AI literacy modules</div>
+    <div class="cover-tags">
+      <span class="ctag ctag-coral">Enhancement E2</span>
+      <span class="ctag ctag-purple">Medium Priority</span>
+      <span class="ctag ctag-purple">3-Phase Roadmap</span>
+      <span class="ctag ctag-purple">4 User Stories</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       CONTEXT
+  ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Context</span>
+      <div class="ch-bar"><div class="ch-title">The Problem &amp; Opportunity</div></div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card compare-wrong">
+        <div class="compare-header">Current State</div>
+        <div class="compare-body">
+          <ul>
+            <li>Every question requires a right/wrong binary outcome</li>
+            <li>Learners who pick the "wrong" self-reflective answer feel penalized</li>
+            <li>Reflection and metacognitive moments can't be designed without workarounds</li>
+            <li>Engagement data shows pressure-to-pass reduces honest self-assessment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-card compare-right">
+        <div class="compare-header">Desired State</div>
+        <div class="compare-body">
+          <ul>
+            <li>A question type where all answers are valid and lead to useful feedback</li>
+            <li>Learners reflect honestly without fear of failing</li>
+            <li>Instructional designers can build metacognitive moments in professional skills content</li>
+            <li>Platform collects learner insight data without score pressure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout c-amber">
+      <div class="callout-label">The Gap</div>
+      The current assessment system forces every question into a right/wrong paradigm, which blocks the creation of reflective, metacognitive moments that are crucial for professional skills and AI literacy content. This limits learner engagement and the ability to personalize learning paths.
+    </div>
+
+    <div class="callout c-navy">
+      <div class="callout-label">Strategic Value</div>
+      Enables differentiation in professional skills and test prep · Improves engagement through personalization · Generates learner insight data without "failing" pressure · Positions the platform as supporting holistic learning, not just knowledge checks
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       LIVE EXAMPLES
+  ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Examples</span>
+      <div class="ch-bar"><div class="ch-title">Interactive Mockups — How It Works for Learners</div></div>
+    </div>
+
+    <p class="sec-body" style="margin-bottom:20px;">Both examples below are interactive. Select any option to see how per-choice feedback appears — without a score or right/wrong indicator.</p>
+
+    <!-- EXAMPLE 1: PROFESSIONAL SKILLS -->
+    <div class="sec">
+      <div class="sec-title">Example 1 — Professional Skills</div>
+      <div class="demo-wrap">
+        <div class="demo-label">Live mockup at 660px — click any option</div>
+        <div class="platform-frame">
+          <div class="sa-card">
+            <div class="sa-stem-bar">
+              <div class="sa-stem-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                Reflect — all answers are valid
+              </div>
+              <div class="sa-stem-text">Which time management challenge affects you most?</div>
+            </div>
+            <div class="sa-options" id="opts-tm">
+              <button class="sa-option" onclick="selectSA('tm','a',this)">
+                <span class="sa-indicator"></span>
+                I struggle to estimate how long tasks will take
+              </button>
+              <button class="sa-option" onclick="selectSA('tm','b',this)">
+                <span class="sa-indicator"></span>
+                I get easily distracted and lose focus
+              </button>
+              <button class="sa-option" onclick="selectSA('tm','c',this)">
+                <span class="sa-indicator"></span>
+                I have trouble saying no to requests
+              </button>
+              <button class="sa-option" onclick="selectSA('tm','d',this)">
+                <span class="sa-indicator"></span>
+                I procrastinate on important tasks
+              </button>
+            </div>
+            <div class="sa-feedback-panel" id="fb-tm-a">
+              <div class="sa-feedback-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+                Insight
+              </div>
+              Many people underestimate task duration. In the next section, you'll learn the "planning fallacy" technique to build in realistic buffer time.
+            </div>
+            <div class="sa-feedback-panel" id="fb-tm-b">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              Attention management is a learnable skill. We'll explore the Pomodoro Technique and strategies to minimize interruptions.
+            </div>
+            <div class="sa-feedback-panel" id="fb-tm-c">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              Boundary-setting is crucial for protecting your time. You'll discover scripts for declining requests professionally.
+            </div>
+            <div class="sa-feedback-panel" id="fb-tm-d">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              Procrastination often signals unclear next steps or anxiety. We'll break down an approach to make big tasks feel manageable.
+            </div>
+            <div class="sa-footer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+              This is a reflection question — there are no wrong answers.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2: TEST PREP / AI LITERACY -->
+    <div class="sec">
+      <div class="sec-title">Example 2 — AI Literacy Module</div>
+      <div class="demo-wrap">
+        <div class="demo-label">Live mockup at 660px — click any option</div>
+        <div class="platform-frame">
+          <div class="sa-card">
+            <div class="sa-stem-bar">
+              <div class="sa-stem-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                Reflect — all answers are valid
+              </div>
+              <div class="sa-stem-text">Before you verified an AI output in the last exercise — how confident were you that it was accurate?</div>
+            </div>
+            <div class="sa-options" id="opts-ai">
+              <button class="sa-option" onclick="selectSA('ai','a',this)">
+                <span class="sa-indicator"></span>
+                Very confident — it sounded authoritative and specific
+              </button>
+              <button class="sa-option" onclick="selectSA('ai','b',this)">
+                <span class="sa-indicator"></span>
+                Somewhat confident — I noticed a few things that seemed off
+              </button>
+              <button class="sa-option" onclick="selectSA('ai','c',this)">
+                <span class="sa-indicator"></span>
+                Not very confident — I had doubts but wasn't sure what to check
+              </button>
+              <button class="sa-option" onclick="selectSA('ai','d',this)">
+                <span class="sa-indicator"></span>
+                I assumed it was wrong and checked everything
+              </button>
+            </div>
+            <div class="sa-feedback-panel" id="fb-ai-a">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              That's the most common starting point — and exactly why SIFT exists. Confident-sounding AI output is the hardest kind to catch. The goal isn't to distrust everything, just to pause on the claims that carry real risk.
+            </div>
+            <div class="sa-feedback-panel" id="fb-ai-b">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              Good instinct. That "something seems off" feeling is your critical thinking at work. The next step is knowing which specific signals to act on — that's what the SIFT steps give you.
+            </div>
+            <div class="sa-feedback-panel" id="fb-ai-c">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              That uncertainty is actually the right place to start. Knowing you're not sure is more useful than false confidence. The toolkit you're building gives you a specific process to follow when you don't know what to check first.
+            </div>
+            <div class="sa-feedback-panel" id="fb-ai-d">
+              <div class="sa-feedback-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>Insight</div>
+              That's a strong habit — but verification doesn't have to be all-or-nothing. The SIFT method helps you focus your checking on the claims that actually carry risk, so verification becomes a two-minute habit rather than an exhaustive process.
+            </div>
+            <div class="sa-footer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+              This is a reflection question — there are no wrong answers.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN NOTES ON THE MOCKUP -->
+    <div class="callout c-purple">
+      <div class="callout-label">Design notes</div>
+      <strong>Color:</strong> Purple/lavender palette — neutral, warm, not red/green. Avoids all right/wrong signal associations. &nbsp;·&nbsp; <strong>Label:</strong> "Reflect — all answers are valid" above the stem. &nbsp;·&nbsp; <strong>Icon:</strong> Lightbulb ("Insight") replaces check/✗ in feedback. &nbsp;·&nbsp; <strong>Footer:</strong> Explicit "no wrong answers" statement. &nbsp;·&nbsp; <strong>Feedback:</strong> Appears inline below choices, not in a separate panel. Learner can change selection and see different feedback.
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       USER STORIES / REQUIREMENTS
+  ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Phase 1</span>
+      <div class="ch-bar"><div class="ch-title">MVP Requirements — User Stories</div></div>
+    </div>
+
+    <div class="callout c-sky" style="margin-bottom:24px;">
+      <div class="callout-label">Phase 1 Scope</div>
+      Self-assessment question type with inline per-choice feedback. No branching, no scoring, no multi-select. Prove the value before adding complexity.
+    </div>
+
+    <div class="story-grid">
+
+      <!-- STORY 1 -->
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-num">1</div>
+          <div class="story-header-text">
+            <div class="story-title">Create Self-Assessment Questions</div>
+            <div class="story-statement">As an instructional designer, I want to create question items where all answer choices are valid and provide unique feedback, so that learners can reflect on their personal situation without fear of being "wrong."</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-section-label">Acceptance Criteria</div>
+          <ul class="story-ac-list">
+            <li>Question type selector includes new "Self-Assessment" option</li>
+            <li>Can add 2–6 answer choices (no minimum of 4 required)</li>
+            <li>Each answer choice has a feedback field (rich text, 500 char max recommended)</li>
+            <li>No "correct answer" designation required or available for this question type</li>
+            <li>Can add question stem/prompt (supports bold, italics, lists)</li>
+            <li>Can preview how question will appear to learners before publishing</li>
+            <li>Question saves with all choices and feedback preserved</li>
+          </ul>
+          <div class="story-note"><strong>Technical note:</strong> Build on existing question framework but remove correctness validation. May need new <code>question_type</code> flag in database. Feedback should support same formatting as explanation fields in current questions.</div>
+        </div>
+      </div>
+
+      <!-- STORY 2 -->
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-num">2</div>
+          <div class="story-header-text">
+            <div class="story-title">Display Inline Feedback on Selection</div>
+            <div class="story-statement">As a learner, I want to see immediate, personalized feedback when I select my answer, so that I can understand the implications of my choice and feel validated in my self-assessment.</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-section-label">Acceptance Criteria</div>
+          <ul class="story-ac-list">
+            <li>When learner selects an option, feedback appears immediately below the question — no page reload</li>
+            <li>Feedback styling is visually distinct from correct/incorrect styling (neutral purple/lavender, not green/red)</li>
+            <li>Learner can change their selection and see different feedback for the new choice</li>
+            <li>No score or correctness indicator appears at any point</li>
+            <li>Feedback remains visible as learner continues through content</li>
+            <li>Mobile-responsive display at all viewport sizes</li>
+          </ul>
+          <div class="story-section-label">Design Constraints</div>
+          <ul class="story-ac-list">
+            <li>Do not use green or red — these signal right/wrong</li>
+            <li>Use purple/lavender palette for feedback container (see mockup above)</li>
+            <li>Use lightbulb icon ("Insight") instead of check/✗</li>
+            <li>Include footer line: "This is a reflection question — there are no wrong answers."</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STORY 3 -->
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-num">3</div>
+          <div class="story-header-text">
+            <div class="story-title">Track Learner Selections for Insights</div>
+            <div class="story-statement">As a content strategist, I want to see aggregated data on which self-assessment options learners choose, so that I can understand learner needs, refine content, and identify patterns across user groups.</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-section-label">Acceptance Criteria</div>
+          <ul class="story-ac-list">
+            <li>System captures which option each learner selected</li>
+            <li>Data associates with user segment (library / military / test prep)</li>
+            <li>Reporting dashboard shows distribution of selections per question</li>
+            <li>Can filter by date range, user segment, and content module</li>
+            <li>Data exports to CSV for deeper analysis</li>
+            <li>Respects existing privacy and anonymization policies</li>
+          </ul>
+          <div class="story-section-label">Open Questions</div>
+          <ul class="story-question-list">
+            <li>Do you track if learners change their answer, or only the final selection?</li>
+            <li>How should the system handle learners who view the question but don't select (skip)?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STORY 4 -->
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-num">4</div>
+          <div class="story-header-text">
+            <div class="story-title">Content Author Flexibility</div>
+            <div class="story-statement">As an instructional designer, I want to edit self-assessment questions after publication, so that I can refine feedback based on learner data without creating new content versions.</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-section-label">Acceptance Criteria</div>
+          <ul class="story-ac-list">
+            <li>Can edit question stem and feedback text after publication</li>
+            <li>Changes do not invalidate existing learner response data</li>
+            <li>Version history is tracked for audit purposes</li>
+            <li>Warning displayed if question is currently in active use when edits are made</li>
+          </ul>
+          <div class="story-note"><strong>Future consideration:</strong> A/B testing different feedback approaches per choice. Not in scope for Phase 1.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       SUCCESS METRICS
+  ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Metrics</span>
+      <div class="ch-bar"><div class="ch-title">Success Metrics</div></div>
+    </div>
+
+    <table class="metrics-table">
+      <tr>
+        <th>Metric</th>
+        <th>Target</th>
+        <th>How to measure</th>
+      </tr>
+      <tr>
+        <td>Adoption in professional skills modules</td>
+        <td>X% of professional skills modules include at least one self-assessment question within 2 release cycles</td>
+        <td>Content audit post-launch</td>
+      </tr>
+      <tr>
+        <td>Completion rate lift</td>
+        <td>Learners who engage with self-assessment questions show Y% higher lesson completion rates</td>
+        <td>A/B comparison: modules with vs. without self-assessment questions</td>
+      </tr>
+      <tr>
+        <td>Reduced support friction</td>
+        <td>Z% reduction in support requests about "failing" formative assessments</td>
+        <td>Support ticket tagging pre/post launch</td>
+      </tr>
+      <tr>
+        <td>Data richness</td>
+        <td>Distribution of learner selections captured per question, usable for content iteration</td>
+        <td>Reporting dashboard review at 60 and 90 days post-launch</td>
+      </tr>
+    </table>
+
+    <div class="story-note" style="border-radius:8px;padding:14px 16px;">
+      <strong>Note:</strong> X, Y, and Z targets should be defined collaboratively with product and content strategy teams before launch. These placeholders are intentional — set targets after baseline data is established.
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       ROADMAP
+  ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Roadmap</span>
+      <div class="ch-bar"><div class="ch-title">3-Phase Development Plan</div></div>
+    </div>
+
+    <div class="roadmap">
+
+      <div class="roadmap-phase rp-1">
+        <div class="roadmap-phase-header">
+          <div class="roadmap-phase-num">1</div>
+          <div>
+            <div class="roadmap-phase-title">MVP — Self-Assessment with Inline Feedback</div>
+            <div class="roadmap-phase-sub">Prove the value before adding complexity</div>
+          </div>
+        </div>
+        <div class="roadmap-phase-body">
+          <div class="roadmap-item">New "Self-Assessment" question type in authoring system — no correct answer designation</div>
+          <div class="roadmap-item">2–6 answer choices, each with individual feedback field (rich text, 500 char max)</div>
+          <div class="roadmap-item">Inline feedback display on selection — purple/lavender palette, lightbulb icon, no score</div>
+          <div class="roadmap-item">Learner can change selection and see updated feedback</div>
+          <div class="roadmap-item">Basic analytics: capture selection per learner, distribution reporting per question</div>
+          <div class="roadmap-item">Post-publication editing without data invalidation</div>
+        </div>
+      </div>
+
+      <div class="roadmap-phase rp-2">
+        <div class="roadmap-phase-header">
+          <div class="roadmap-phase-num">2</div>
+          <div>
+            <div class="roadmap-phase-title">Branching &amp; Personalized Next Steps</div>
+            <div class="roadmap-phase-sub">Use selection data to shape the learning path</div>
+          </div>
+        </div>
+        <div class="roadmap-phase-body">
+          <div class="roadmap-item">Route learners to different content sections or supplemental resources based on their selection</div>
+          <div class="roadmap-item">Multi-select option: allow learners to choose more than one answer with combined or per-choice feedback</div>
+          <div class="roadmap-item">Enhanced analytics: track answer changes, skip rates, and cross-question patterns</div>
+          <div class="roadmap-item">"Progress check" questions that reference earlier selections within the same lesson</div>
+        </div>
+      </div>
+
+      <div class="roadmap-phase rp-3">
+        <div class="roadmap-phase-header">
+          <div class="roadmap-phase-num">3</div>
+          <div>
+            <div class="roadmap-phase-title">Extended Reflection Formats</div>
+            <div class="roadmap-phase-sub">Expand beyond single-choice to richer reflection types</div>
+          </div>
+        </div>
+        <div class="roadmap-phase-body">
+          <div class="roadmap-item">Rating scale questions (1–5 slider) with feedback ranges: "If mostly high…", "If mixed…", "If mostly low…"</div>
+          <div class="roadmap-item">Multi-question connected assessments — "Mostly As / Bs / Cs" bucket feedback across a set</div>
+          <div class="roadmap-item">Weighted scoring variant for soft-skill self-assessment (e.g., leadership style profiling)</div>
+          <div class="roadmap-item">Open-ended text reflection with AI-generated feedback (exploratory — requires AI integration layer)</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHASE 3 SLIDER MOCKUP -->
+    <div class="sec" style="margin-top:28px;">
+      <div class="sec-title">Phase 3 Preview — Slider / Rating Scale</div>
+      <div class="demo-wrap">
+        <div class="demo-label">Concept mockup — not Phase 1 scope</div>
+        <div class="platform-frame">
+          <div class="sa-card">
+            <div class="sa-stem-bar">
+              <div class="sa-stem-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                Your Reliability Baseline — rate yourself honestly
+              </div>
+              <div class="sa-stem-text">How would you rate yourself on these reliability signals?</div>
+            </div>
+            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:16px;">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--deep-navy);margin-bottom:8px;">I arrive on time to meetings and commitments</div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span style="font-size:11px;color:var(--slate);">Rarely</span>
+                  <input type="range" min="1" max="5" value="3" style="flex:1;accent-color:var(--purple);">
+                  <span style="font-size:11px;color:var(--slate);">Always</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--deep-navy);margin-bottom:8px;">I follow through on what I commit to</div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span style="font-size:11px;color:var(--slate);">Rarely</span>
+                  <input type="range" min="1" max="5" value="4" style="flex:1;accent-color:var(--purple);">
+                  <span style="font-size:11px;color:var(--slate);">Always</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--deep-navy);margin-bottom:8px;">I come to meetings prepared</div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span style="font-size:11px;color:var(--slate);">Rarely</span>
+                  <input type="range" min="1" max="5" value="2" style="flex:1;accent-color:var(--purple);">
+                  <span style="font-size:11px;color:var(--slate);">Always</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin:0 16px 14px;padding:13px 16px;border-radius:8px;background:var(--purple-lt);border-left:3px solid var(--purple);font-size:13px;line-height:1.6;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:5px;">Auto-feedback based on responses</div>
+              You're doing some things well. Focus on the areas where you scored lower — pick one specific behavior to improve this week. Consistency in one area builds confidence to tackle the next.
+            </div>
+            <div class="sa-footer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+              This is a self-assessment — your responses are private and unscored.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       SPEC SUMMARY
+  ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="chapter-hd">
+      <span class="ch-num">Spec</span>
+      <div class="ch-bar"><div class="ch-title">Design &amp; Content Specification — Phase 1</div></div>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>Element</th><th>Spec</th></tr>
+      <tr><td>Question type label</td><td>"Self-Assessment" in authoring system. Displayed to learners as "Reflect" label above stem.</td></tr>
+      <tr><td>Stem</td><td>Rich text. Supports bold, italic, lists. Max 300 characters recommended.</td></tr>
+      <tr><td>Answer choices</td><td>2–6 choices. No minimum of 4. No correct answer field. Each choice has its own feedback field.</td></tr>
+      <tr><td>Feedback per choice</td><td>Rich text. 500 char max recommended. Appears inline below the question on selection.</td></tr>
+      <tr><td>Feedback palette</td><td>Background: <code>#EDE8F5</code> (purple light). Border-left: <code>#7B5EA7</code> (purple) 3px. No green, no red.</td></tr>
+      <tr><td>Feedback icon</td><td>Lightbulb SVG. Label: "Insight." Not "Correct" or "Incorrect."</td></tr>
+      <tr><td>Score display</td><td>None. No score badge, no points value, no correct/incorrect label at any point.</td></tr>
+      <tr><td>Completion tracking</td><td>Counted as "attempted" once learner selects at least one choice. Does not affect pass/fail status.</td></tr>
+      <tr><td>Answer change</td><td>Learner can change selection. Feedback updates to reflect new choice. No limit on changes.</td></tr>
+      <tr><td>Footer line</td><td>"This is a reflection question — there are no wrong answers." Italic, slate, 11px.</td></tr>
+      <tr><td>Storyboard notation</td><td><code>[Self-Assessment Question]</code> tag. No asterisk (*) on any choice. Each choice followed by <code>Feedback: [text]</code> on next line.</td></tr>
+      <tr><td>Accessibility</td><td>Radio group with <code>role="radiogroup"</code>. Each option: <code>role="radio"</code>, <code>aria-checked</code>. Feedback panel: <code>aria-live="polite"</code>. Footer note: included in ARIA description of question.</td></tr>
+    </table>
+
+  </div>
+
+</div><!-- /shell -->
+
+<script>
+const saState = {};
+
+function selectSA(group, choice, btn) {
+  const opts = document.getElementById('opts-' + group);
+  // Clear all selected states and hide all feedback
+  opts.querySelectorAll('.sa-option').forEach(b => b.classList.remove('selected'));
+  opts.querySelectorAll('.sa-indicator').forEach(ind => ind.textContent = '');
+
+  // Hide all feedback panels for this group
+  ['a','b','c','d'].forEach(c => {
+    const fb = document.getElementById('fb-' + group + '-' + c);
+    if (fb) fb.classList.remove('show');
+  });
+
+  // Select this option
+  btn.classList.add('selected');
+  btn.querySelector('.sa-indicator').textContent = '✓';
+
+  // Show this feedback
+  const fb = document.getElementById('fb-' + group + '-' + choice);
+  if (fb) {
+    fb.classList.add('show');
+    setTimeout(() => fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
+
+  saState[group] = choice;
+}
+</script>
+</body>
+</html>
